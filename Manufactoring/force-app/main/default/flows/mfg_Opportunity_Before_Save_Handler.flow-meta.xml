@@ -1,0 +1,1157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Only On Hold Stage is Allowed From Closed Lost.</description>
+        <name>ClosedLostToOnHoldStageOnlyAllowed</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Only allow changing from Closed Lost to On Hold to keep data clean and prevent reopening lost deals.</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>FlowName</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Opportunity After Save Handler - mfg_Opportunity_After_Save_Handler</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>KeyFieldsNotPopulatedWarningMessage</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Required fields are not populated. Please fill out all Key fields to proceed.</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>StageSkippingWarningMessage</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Stage sequence cannot be skipped. Please move through stages in order.</stringValue>
+        </value>
+    </constants>
+    <customErrors>
+        <name>Closed_Lost_Reopening_Warning_Message</name>
+        <label>Closed Lost Reopening Warning Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>{!ClosedLostToOnHoldStageOnlyAllowed}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Key_Fields_Not_Populated_Warning_Message</name>
+        <label>Key Fields Not Populated Warning Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>{!KeyFieldsNotPopulatedWarningMessage}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Stage sequence cannot be skipped. Please move through stages in order.</description>
+        <name>Skipping_Stage_Warning_Message</name>
+        <label>Skipping Stage Warning Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>{!StageSkippingWarningMessage}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Are_Closed_Lost_Required_Fields_Populated</name>
+        <label>Are Closed Lost Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Closed_Lost_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Reason__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Closed Lost Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_Negotiation_Required_Fields_Populated</name>
+        <label>Are Negotiation Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Negotiation_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_PaymentTerms__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_PlanningToBuy__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Negotiation Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_On_Hold_Required_Fields_Populated</name>
+        <label>Are On Hold Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>On_Hold_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Reason__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_ExpectedResumeDate__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>On Hold Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_Qualification_Required_Fields_Populated</name>
+        <label>Are Qualification Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Qualification_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Product_Family__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_DealerAcknowledged__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_Primary_Contact__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_Key_Requirements_Notes__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Qualification Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_Quotation_Required_Fields_Populated</name>
+        <label>Are Quotation Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Quotation_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SyncedQuoteId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_Discount__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Pricebook2Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Quotation Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Delivery_Transport_Schedule_Required_Fields_Populated</name>
+        <label>Delivery / Transport Schedule Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Delivery_Transport_Schedule_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Transport_And_Schedule__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Delivery / Transport Schedule Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Document_Review_Required_Fields_Populated</name>
+        <label>Document Review Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Document_Review_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_DocumentTypes__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_DocumentsAttached__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_DocumentVerificationDate__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_DocumentVerificationFeedback__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_DocumentVerificationStatus__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Document Review Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_Closed_Lost</name>
+        <label>If Next Stage Of Closed Lost</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Closed_Lost_Not_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Lost_Reopening_Warning_Message</targetReference>
+            </connector>
+            <label>Closed Lost Not To On Hold</label>
+        </rules>
+        <rules>
+            <name>Closed_Lost_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Closed Lost To On Hold</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_Delivery_Transport_Schedule</name>
+        <label>If Next Stage Of Delivery / Transport Schedule</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Delivery_Transport_Schedule_To_Invoice_Payment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Invoice / Payment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delivery_Transport_Schedule_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Delivery / Transport Schedule To Invoice / Payment</label>
+        </rules>
+        <rules>
+            <name>Delivery_Transport_Schedule_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_On_Hold_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Delivery / Transport Schedule To On Hold</label>
+        </rules>
+        <rules>
+            <name>Delivery_Transport_Schedule_To_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_Closed_Lost_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Delivery / Transport Schedule To Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Skipping_Stage_From_Delivery_Transport_Schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Invoice / Payment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Skipping_Stage_Warning_Message</targetReference>
+            </connector>
+            <label>Skipping Stage From Delivery / Transport Schedule</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_Document_Review</name>
+        <label>If Next Stage Of Document Review</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Document_Review_To_Order</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Order</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Document_Review_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Document Review To Order</label>
+        </rules>
+        <rules>
+            <name>Document_Review_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_On_Hold_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Document Review To On Hold</label>
+        </rules>
+        <rules>
+            <name>Document_Review_To_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_Closed_Lost_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Document Review To Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Skipping_Stage_From_Document_Review</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Order</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Skipping_Stage_Warning_Message</targetReference>
+            </connector>
+            <label>Skipping Stage From Document Review</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_Invoice_Payment</name>
+        <label>If Next Stage Of Invoice / Payment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Invoice_Payment_To_Closed_Won</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invoice_Payment_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Invoice / Payment To Closed Won</label>
+        </rules>
+        <rules>
+            <name>Invoice_Payment_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_On_Hold_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Invoice / Payment To On Hold</label>
+        </rules>
+        <rules>
+            <name>Invoice_Payment_To_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_Closed_Lost_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Invoice / Payment To Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Skipping_Stage_From_Invoice_Payment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Skipping_Stage_Warning_Message</targetReference>
+            </connector>
+            <label>Skipping Stage From Invoice / Payment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_Negotiation</name>
+        <label>If Next Stage Of Negotiation</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Negotiation_To_Document_Review</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Document Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_Negotiation_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Negotiation To Document Review</label>
+        </rules>
+        <rules>
+            <name>Negotiation_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_On_Hold_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Negotiation To On Hold</label>
+        </rules>
+        <rules>
+            <name>Negotiation_To_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_Closed_Lost_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Negotiation To Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Skipping_Stage_From_Negotiation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Document Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Skipping_Stage_Warning_Message</targetReference>
+            </connector>
+            <label>Skipping Stage From Negotiation</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_On_Hold</name>
+        <label>If Next Stage Of On Hold</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>On_Hold_To_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_Closed_Lost_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>On Hold To Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Skipping_Stage_From_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Skipping_Stage_Warning_Message</targetReference>
+            </connector>
+            <label>Skipping Stage From On Hold</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_Order</name>
+        <label>If Next Stage Of Order</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Order_To_Delivery_Transport_Schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Delivery / Transport Schedule</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Order_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Order To Delivery / Transport Schedule</label>
+        </rules>
+        <rules>
+            <name>Order_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_On_Hold_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Order To On Hold</label>
+        </rules>
+        <rules>
+            <name>Order_To_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_Closed_Lost_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Order To Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Skipping_Stage_From_Order</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Delivery / Transport Schedule</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Skipping_Stage_Warning_Message</targetReference>
+            </connector>
+            <label>Skipping Stage From Order</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_Qualification</name>
+        <label>If Next Stage Of Qualification</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Qualification_To_Quotation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Quotation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_Qualification_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Qualification To Quotation</label>
+        </rules>
+        <rules>
+            <name>Qualification_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_On_Hold_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Qualification To On Hold</label>
+        </rules>
+        <rules>
+            <name>Qualification_To_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_Closed_Lost_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Qualification To Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Skipping_Stage_From_Qualification</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Quotation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Skipping_Stage_Warning_Message</targetReference>
+            </connector>
+            <label>Skipping Stage From Qualification</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Next_Stage_Of_Quotation</name>
+        <label>If Next Stage Of Quotation</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Quotation_To_Negotiation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Negotiation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_Quotation_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Quotation To Negotiation</label>
+        </rules>
+        <rules>
+            <name>Quotation_To_On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_On_Hold_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Quotation To On Hold</label>
+        </rules>
+        <rules>
+            <name>Quotation_To_Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Are_Closed_Lost_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Quotation To Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Skipping_Stage_From_Quotation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Negotiation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Skipping_Stage_Warning_Message</targetReference>
+            </connector>
+            <label>Skipping Stage From Quotation</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Previous_Stage</name>
+        <label>If Previous Stage</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Qualification</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualification</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_Qualification</targetReference>
+            </connector>
+            <label>Qualification</label>
+        </rules>
+        <rules>
+            <name>Quotation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Quotation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_Quotation</targetReference>
+            </connector>
+            <label>Quotation</label>
+        </rules>
+        <rules>
+            <name>Negotiation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Negotiation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_Negotiation</targetReference>
+            </connector>
+            <label>Negotiation</label>
+        </rules>
+        <rules>
+            <name>Document_Review</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Document Review</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_Document_Review</targetReference>
+            </connector>
+            <label>Document Review</label>
+        </rules>
+        <rules>
+            <name>Order</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Order</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_Order</targetReference>
+            </connector>
+            <label>Order</label>
+        </rules>
+        <rules>
+            <name>Delivery_Transport_Schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Delivery / Transport Schedule</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_Delivery_Transport_Schedule</targetReference>
+            </connector>
+            <label>Delivery / Transport Schedule</label>
+        </rules>
+        <rules>
+            <name>Invoice_Payment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Invoice / Payment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_Invoice_Payment</targetReference>
+            </connector>
+            <label>Invoice / Payment</label>
+        </rules>
+        <rules>
+            <name>On_Hold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_On_Hold</targetReference>
+            </connector>
+            <label>On Hold</label>
+        </rules>
+        <rules>
+            <name>Closed_Lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Next_Stage_Of_Closed_Lost</targetReference>
+            </connector>
+            <label>Closed Lost</label>
+        </rules>
+        <rules>
+            <name>Closed_Won</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Closed Won</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Invoice_Payment_Required_Fields_Populated</name>
+        <label>Invoice / Payment Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Invoice_Payment_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Invoice_And_Payment__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Invoice / Payment Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_New_Opportunity</name>
+        <label>Is New Opportunity ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_Stage_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Existing Opportunity</defaultConnectorLabel>
+        <rules>
+            <name>New_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>New Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Stage_Changed</name>
+        <label>Is Stage Changed ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Stage Not Changed</defaultConnectorLabel>
+        <rules>
+            <name>Stage_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.StageName</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Previous_Stage</targetReference>
+            </connector>
+            <label>Stage Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Order_Required_Fields_Populated</name>
+        <label>Order Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Key_Fields_Not_Populated_Warning_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Order_Key_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Synced_Order__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Order Key Fields Populated</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <description>Checks if the record is new, and returns TRUE if it is new. Otherwise, returns FALSE</description>
+        <name>IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Opportunity Before Save Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity Before Save Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_New_Opportunity</targetReference>
+        </connector>
+        <filterFormula>{!$Label.mfg_Activate_Flow} = &quot;true&quot; &amp;&amp; LOWER({!$Record.RecordType.DeveloperName}) = LOWER(&quot;mfg_Customer_Opportunity_Recordtype&quot;)</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Stores the result message from DML operations.</description>
+        <name>Log</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>mfg_Log__c</objectType>
+    </variables>
+    <variables>
+        <name>OrderToUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Order</objectType>
+    </variables>
+</Flow>

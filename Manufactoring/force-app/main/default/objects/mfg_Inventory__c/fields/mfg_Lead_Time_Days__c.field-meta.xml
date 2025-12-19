@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Lead_Time_Days__c</fullName>
+    <defaultValue>1</defaultValue>
+    <externalId>false</externalId>
+    <inlineHelpText>Specifies the planning buffer in days based on how frequently planning is executed.
+Helps maintain enough inventory to last until the next daily planning and production cycle.</inlineHelpText>
+    <label>Lead Time (Days)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

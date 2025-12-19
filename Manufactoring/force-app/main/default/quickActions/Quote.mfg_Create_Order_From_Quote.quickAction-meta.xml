@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This action button call the screen flow then autolaunched flow to create a Order.</description>
+    <flowDefinition>mfg_Create_Order_Quick_Action</flowDefinition>
+    <label>Create Order From Quote</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

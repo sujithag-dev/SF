@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Dealer_Lead_Recordtype</fullName>
+    <active>true</active>
+    <businessProcess>mfg Lead Process</businessProcess>
+    <compactLayoutAssignment>mfg_Dealer_Compact_Layout</compactLayoutAssignment>
+    <label>Dealer</label>
+    <picklistValues>
+        <picklist>GenderIdentity</picklist>
+        <values>
+            <fullName>Female</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Male</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nonbinary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Listed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Industry</picklist>
+        <values>
+            <fullName>Agriculture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Apparel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Biotechnology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electronics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food %26 Beverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Government</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospitality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Machinery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manufacturing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not For Profit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recreation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telecommunications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utilities</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Inquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased List</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Name</picklist>
+        <values>
+            <fullName>Dr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mrs%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ms%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mx%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prof%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pronouns</picklist>
+        <values>
+            <fullName>He%2FHim</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>He%2FThey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Listed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>She%2FHer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>She%2FThey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>They%2FThem</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rating</picklist>
+        <values>
+            <fullName>Cold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hot</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warm</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_Communication_Preference__c</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In-Person Meeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Site Visit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WhatsApp</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_CompanyContactRole__c</picklist>
+        <values>
+            <fullName>Accounts Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Admin %2F Coordinator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consultant %2F Advisor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>End User %2F Operator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineer %2F Technical Lead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance Head</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Logistics Coordinator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operations Head</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Owner %2F Director</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procurement Officer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchase Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Manager</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_Dealer_Type__c</picklist>
+        <values>
+            <fullName>Authorized Dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Distributor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OEM Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional Dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reseller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retailer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Strategic Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Value-Added Reseller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wholesaler</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_Lead_Type__c</picklist>
+        <values>
+            <fullName>mfg_Customer_Lead_Recordtype</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>mfg_Dealer_Lead_Recordtype</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_PlanningToBuy__c</picklist>
+        <values>
+            <fullName>Future Plan %28Beyond 1 Year%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immediately %28Within 1 Month%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Long Term %286-12 Months%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium Term %283-6 Months%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Short Term %281-3 Months%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Still Exploring%2FNo Specific Timeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_ProductCategoryInterest__c</picklist>
+        <values>
+            <fullName>Automotive Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electrical Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electronics and Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy and Power Systems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hydraulics and Pneumatics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Machinery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lubricants and Oils</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Supplies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mechanical Assemblies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metal Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Packaging Materials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plastic Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Raw Materials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rubber Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safety and Compliance Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spare Parts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tools and Fixtures</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation and Logistics Equipment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_Product_Family__c</picklist>
+        <values>
+            <fullName>Commercial Vehicles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compact Sedans</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electric Vehicles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hatchbacks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SUVs And Crossovers</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_Product_Subcategory__c</picklist>
+        <values>
+            <fullName>Battery And Power Unit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Body And Trim</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Braking System</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cab And Frame</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chassis And Suspension</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drivetrain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electrical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electrical And Lighting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engine Systems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exterior Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel And Exhaust</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Infotainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Interior And Infotainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Interior Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightweight Body</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motor And Controller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Powertrain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safety Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thermal And Cooling</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>mfg_Urgency_Level__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

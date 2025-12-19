@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Batches_Per_Day__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    OR(
+        ISBLANK( mfg_Cycle_Time_In_Minutes__c ),
+        mfg_Cycle_Time_In_Minutes__c &lt;= 0,
+        ISBLANK(VALUE( $Label.mfg_Production_Hours_Per_Day ))
+    ),
+    0,
+    FLOOR(
+        (VALUE($Label.mfg_Production_Hours_Per_Day) * 60)
+        / mfg_Cycle_Time_In_Minutes__c 
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Shows how many full production batches can be completed in a day based on available working hours and cycle time.
+Partial batches are ignored and the value is shown as zero if required inputs are missing or invalid.</inlineHelpText>
+    <label>Batches Per Day</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

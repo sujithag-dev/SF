@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Invalid_Transition_Error_Message</name>
+        <label>Invalid Transition Error Message</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>{!InvalidErrorMessage}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Key_Fields_Missing</name>
+        <label>Key Fields Missing</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>{!ErrorMessage}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Skipping_Next_Stage</name>
+        <label>Skipping Next Stage</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>{!StageSkippingWarningMessage}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Are_Follow_Up_Fields_Populated</name>
+        <label>Are Follow Up Fields Populated</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Follow_Up_Fields_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Company</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_CIN__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_Dealer_Type__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Follow Up Fields Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_FollowUp_Required_Fields_Populated</name>
+        <label>Are FollowUp Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Followup</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Company</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_EstimatedBudget__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_KeyRequirementsNotes__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_PlanningToBuy__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_CIN__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_Open_Required_Fields_Populated</name>
+        <label>Are Open Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LastName</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.MobilePhone</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Email</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_ProductCategoryInterest__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Are_Open_Required_Fields_Populated_Customer</name>
+        <label>Are Open Required Fields Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LastName</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.MobilePhone</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Email</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_Product_Family__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.mfg_Product_Subcategory__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Previous_Stage_is_Follow_Up</name>
+        <label>If Previous Stage is Follow Up</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Follow_Up_to_Converted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Converted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_Follow_Up_Fields_Populated</targetReference>
+            </connector>
+            <label>Follow Up to Converted</label>
+        </rules>
+        <rules>
+            <name>Follow_Up_to_Not_Converted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Converted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Reason_provided_FNot_Converted</targetReference>
+            </connector>
+            <label>Follow Up to Not Converted</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Previous_Stage_is_Follow_Up_Customer</name>
+        <label>If Previous Stage is Follow Up</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Follow_Up_to_Converted_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Converted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_FollowUp_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Follow Up to Converted</label>
+        </rules>
+        <rules>
+            <name>Follow_Up_to_Not_Converted_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Converted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Reason_provid_Customer</targetReference>
+            </connector>
+            <label>Follow Up to Not Converted</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Previous_Stage_is_Open</name>
+        <label>If Previous Stage is Open</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Open_to_Follow_Up</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Open</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_Open_Required_Fields_Populated</targetReference>
+            </connector>
+            <label>Open to Follow Up</label>
+        </rules>
+        <rules>
+            <name>Open_to_Not_Converted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Open</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Converted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Reason_provided</targetReference>
+            </connector>
+            <label>Open to Not Converted</label>
+        </rules>
+        <rules>
+            <name>Skipping_Next_Stage_Dealer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Open</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Skipping_Next_Stage</targetReference>
+            </connector>
+            <label>Skipping Next Stage</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Previous_Stage_is_Open_Customer</name>
+        <label>If Previous Stage is Open</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Open_to_Follow_Up_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Open</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Are_Open_Required_Fields_Populated_Customer</targetReference>
+            </connector>
+            <label>Open to Follow Up</label>
+        </rules>
+        <rules>
+            <name>Open_to_Not_Converted_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Open</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Converted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Reason_provided_Customer</targetReference>
+            </connector>
+            <label>Open to Not Converted</label>
+        </rules>
+        <rules>
+            <name>Skipping_Next_Stage_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Open</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Skipping_Next_Stage</targetReference>
+            </connector>
+            <label>Skipping Next Stage</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Invalid_Transition</name>
+        <label>Invalid Transition</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Lead_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>yes_Invalid_Transition</name>
+            <conditionLogic>1 OR (2 AND 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>StageOrder</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>PriorStageOrder</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Converted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Converted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invalid_Transition_Error_Message</targetReference>
+            </connector>
+            <label>yes,Invalid Transition</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_New_Lead</name>
+        <label>Is New Lead?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_Status_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No,It isn&apos;t</defaultConnectorLabel>
+        <rules>
+            <name>Yes_It_is</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes,It is</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Reason_provid_Customer</name>
+        <label>Is Reason provided?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Provided</defaultConnectorLabel>
+        <rules>
+            <name>Provid_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Reason__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Provided</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Reason_provided</name>
+        <label>Is Reason provided?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Provided</defaultConnectorLabel>
+        <rules>
+            <name>Provided</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Reason__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Provided</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Reason_provided_Customer</name>
+        <label>Reason provided?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Provided</defaultConnectorLabel>
+        <rules>
+            <name>Provided_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Reason__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Provided</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Reason_provided_FNot_Converted</name>
+        <label>Is Reason provided?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Key_Fields_Missing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>yes_provided</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Reason__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>yes,provided</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Status_Changed</name>
+        <label>Is Status Changed?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Status</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invalid_Transition</targetReference>
+            </connector>
+            <label>yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_Type</name>
+        <label>Lead Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Dealer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>mfg_Dealer_Lead_Recordtype</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Previous_Stage</targetReference>
+            </connector>
+            <label>Dealer</label>
+        </rules>
+        <rules>
+            <name>Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>mfg_Customer_Lead_Recordtype</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Previous_Stage_Customer</targetReference>
+            </connector>
+            <label>Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Previous_Stage</name>
+        <label>Previous Stage</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Open</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Open</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Previous_Stage_is_Open</targetReference>
+            </connector>
+            <label>Open</label>
+        </rules>
+        <rules>
+            <name>Follow_Up</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Previous_Stage_is_Follow_Up</targetReference>
+            </connector>
+            <label>Follow Up</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Previous_Stage_Customer</name>
+        <label>Previous Stage</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Open_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Open</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Previous_Stage_is_Open_Customer</targetReference>
+            </connector>
+            <label>Open</label>
+        </rules>
+        <rules>
+            <name>Follow_Up_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Previous_Stage_is_Follow_Up_Customer</targetReference>
+            </connector>
+            <label>Follow Up</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>DynamicMissingFieldsText</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    /* -------- DEALER -------- */
+    $Record.RecordType.DeveloperName = &quot;mfg_Dealer_Lead_Recordtype&quot;,
+
+    IF(
+        AND(PrevStageText = &quot;Open&quot;, NewStageText = &quot;Follow Up&quot;),
+            IF(ISBLANK($Record.LastName), &quot;Last Name, &quot;, &quot;&quot;) &amp;
+            IF(ISBLANK($Record.MobilePhone), &quot;Mobile Phone, &quot;, &quot;&quot;) &amp;
+            IF(ISBLANK($Record.Email), &quot;Email, &quot;, &quot;&quot;) &amp;
+            IF(ISBLANK(TEXT($Record.mfg_ProductCategoryInterest__c)), &quot;Product Category Interest, &quot;, &quot;&quot;),
+
+    IF(
+        AND(PrevStageText = &quot;Open&quot;, NewStageText = &quot;Not Converted&quot;),
+            IF(ISBLANK($Record.mfg_Reason__c), &quot;Reason, &quot;, &quot;&quot;),
+
+    IF(
+        AND(PrevStageText = &quot;Follow Up&quot;, NewStageText = &quot;Converted&quot;),
+            IF(ISBLANK($Record.Company), &quot;Company, &quot;, &quot;&quot;) &amp;
+            IF(ISBLANK($Record.mfg_CIN__c), &quot;CIN, &quot;, &quot;&quot;) &amp;
+            IF(ISBLANK(TEXT($Record.mfg_Dealer_Type__c)), &quot;Dealer Type, &quot;, &quot;&quot;),
+
+    IF(
+        AND(PrevStageText = &quot;Follow Up&quot;, NewStageText = &quot;Not Converted&quot;),
+            IF(ISBLANK($Record.mfg_Reason__c), &quot;Reason, &quot;, &quot;&quot;),
+        &quot;&quot;
+    )))),
+
+    /* -------- CUSTOMER -------- */
+    IF(
+        $Record.RecordType.DeveloperName = &quot;mfg_Customer_Lead_Recordtype&quot;,
+
+        IF(
+            AND(PrevStageText = &quot;Open&quot;, NewStageText = &quot;Follow Up&quot;),
+                IF(ISBLANK($Record.LastName), &quot;Last Name, &quot;, &quot;&quot;) &amp;
+                IF(ISBLANK($Record.MobilePhone), &quot;Mobile Phone, &quot;, &quot;&quot;) &amp;
+                IF(ISBLANK($Record.Email), &quot;Email, &quot;, &quot;&quot;) &amp;
+                IF(ISBLANK(TEXT($Record.mfg_Product_Family__c)), &quot;Product Family, &quot;,&quot;&quot;) &amp;
+                IF(ISBLANK(TEXT($Record.mfg_Product_Subcategory__c)), &quot;Product SubCategory, &quot;, &quot;&quot;),
+
+        IF(
+            AND(PrevStageText = &quot;Open&quot;, NewStageText = &quot;Not Converted&quot;),
+                IF(ISBLANK($Record.mfg_Reason__c), &quot;Reason, &quot;, &quot;&quot;),
+
+        IF(
+            AND(PrevStageText = &quot;Follow Up&quot;, NewStageText = &quot;Converted&quot;),
+                IF(ISBLANK($Record.Company), &quot;Company, &quot;, &quot;&quot;) &amp;
+                IF(ISBLANK($Record.mfg_CIN__c), &quot;CIN, &quot;, &quot;&quot;) &amp;
+                IF(ISBLANK($Record.mfg_EstimatedBudget__c), &quot;Estimated Budget, &quot;, &quot;&quot;) &amp;
+                IF(ISBLANK($Record.mfg_KeyRequirementsNotes__c), &quot;Key Requirements Notes, &quot;, &quot;&quot;) &amp;
+                IF(ISBLANK(TEXT($Record.mfg_PlanningToBuy__c)), &quot;Planning To Buy, &quot;, &quot;&quot;),
+
+        IF(
+            AND(PrevStageText = &quot;Follow Up&quot;, NewStageText = &quot;Not Converted&quot;),
+                IF(ISBLANK($Record.mfg_Reason__c), &quot;Reason, &quot;, &quot;&quot;),
+        &quot;&quot;
+        )))),
+
+        &quot;&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>ErrorMessage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  NOT(ISBLANK({!DynamicMissingFieldsText})),
+  &quot;The following fields are required for transition from &quot; &amp;
+  {!PrevStageText} &amp; &quot; to &quot; &amp; {!NewStageText} &amp; &quot;: &quot; &amp;
+  LEFT({!DynamicMissingFieldsText}, LEN({!DynamicMissingFieldsText}) - 2),
+  &quot;&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>InvalidErrorMessage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    AND({!PrevStageText} = &quot;Not Converted&quot;, {!NewStageText} &lt;&gt; &quot;Not Converted&quot;),
+    &quot;You cannot move from Not Converted to any other stage.&quot;,
+
+
+    IF(
+        {!StageOrder} &lt; {!PriorStageOrder},
+        &quot;You cannot move backward. Please select a forward stage.&quot;,
+        &quot;&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>NewStageText</name>
+        <dataType>String</dataType>
+        <expression>TEXT($Record.Status)</expression>
+    </formulas>
+    <formulas>
+        <name>PrevStageText</name>
+        <dataType>String</dataType>
+        <expression>TEXT($Record__Prior.Status)</expression>
+    </formulas>
+    <formulas>
+        <name>PriorStageOrder</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+    {!PrevStageText} = &quot;Open&quot;, 1,
+    IF(
+        {!PrevStageText} = &quot;Follow Up&quot;, 2,
+        IF(
+            {!PrevStageText} = &quot;Converted&quot;, 4,
+            IF(
+                {!PrevStageText} = &quot;Not Converted&quot;, 3,
+                0
+            )
+        )
+    )
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>StageOrder</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+    {!NewStageText} = &quot;Open&quot;, 1,
+    IF(
+        {!NewStageText} = &quot;Follow Up&quot;, 2,
+        IF(
+            {!NewStageText} = &quot;Converted&quot;, 4,
+            IF(
+                {!NewStageText} = &quot;Not Converted&quot;, 3,
+                0
+            )
+        )
+    )
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Lead Before Save Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead Before Save Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_New_Lead</targetReference>
+        </connector>
+        <filterFormula>{!$Label.mfg_Activate_Flow} = &quot;true&quot; &amp;&amp;
+(
+    {!$Record.RecordType.DeveloperName} = &quot;mfg_Customer_Lead_Recordtype&quot; ||
+    {!$Record.RecordType.DeveloperName} = &quot;mfg_Dealer_Lead_Recordtype&quot;
+)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>KeyFieldsNotPopulatedWarningMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Required fields are not populated. Please fill out all Key fields to proceed.</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>StageSkippingWarningMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Stage sequence cannot be skipped. Please move through stages in order.</stringValue>
+        </value>
+    </variables>
+</Flow>
