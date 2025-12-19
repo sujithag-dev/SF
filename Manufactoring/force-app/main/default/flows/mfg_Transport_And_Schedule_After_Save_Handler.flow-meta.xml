@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_New_Transport_And_Schedule</name>
+        <label>Is New Transport And Schedule</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_Product_Status_is_Set_to_Product_Collected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No, Existing transport And Schedule</defaultConnectorLabel>
+        <rules>
+            <name>Yes_New_Transport_And_Schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes, New Transport And Schedule</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Product_Status_is_Set_to_Product_Collected</name>
+        <label>Is Product Status is Set to Product Collected</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No, Product Not Collected</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Product_Collected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Product_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Products Collected</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Inventory_Sync_From_Transport_And_Schedule</targetReference>
+            </connector>
+            <label>Yes, Product Collected</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Transport And Schedule After Save Handler -  mfg_Transport_And_Schedule_After_Save_Handler{!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Transport And Schedule After Save Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_New_Transport_And_Schedule</targetReference>
+        </connector>
+        <filterFormula>{!$Label.mfg_Activate_Flow} = &quot;true&quot;</filterFormula>
+        <object>mfg_Transport_And_Schedule__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Inventory_Sync_From_Transport_And_Schedule</name>
+        <label>Inventory Sync From Transport And Schedule</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <flowName>mfg_Inventory_Sync_From_Transport_And_Schedule</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

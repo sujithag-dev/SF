@@ -1,0 +1,58 @@
+.section-card {
+    border-radius: 8px;
+    border: 1px solid #d8dde6;
+    background-color: #fefefe;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 1rem 1.5rem;
+}
+
+.section-title {
+    color: #032d60;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.slds-text-link{
+    cursor: pointer;  
+    color: #1377f1;
+    text-decoration: underline;
+}
+
+.field-col {
+    padding: 0.3rem 0.75rem;
+    
+}
+
+.field-col p {
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.field-col strong {
+    width: 41%;
+    color: #444;
+}
+
+.field-col span {
+    width: 55%;
+    /* color: #032d60; */
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.slds-box {
+    background: #ffffff;
+}
+
+.slds-align_absolute-center {
+    text-align: center;
+}
+
+.slds-text-color_weak {
+    font-style: italic;
+    color: #999;
+}

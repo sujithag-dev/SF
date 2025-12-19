@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Schedule_Count_Greater_Than_Quantity</fullName>
+    <active>false</active>
+    <errorConditionFormula>mfg_Sales_Agreement__r.mfg_Schedule_count__c &gt;= mfg_Total_Quantity__c</errorConditionFormula>
+    <errorDisplayField>mfg_Total_Quantity__c</errorDisplayField>
+    <errorMessage>Total Quantity does not meet your scheduled plan (Schedule Count ≤ Total Quantity).
+Each schedule must have at least one unit assigned.”</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_CreateUser__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>Select this option to request partner access. When checked, the record is sent to the Sales Manager for approval. Once approved, a partner user will be created and partner access will be granted.</inlineHelpText>
+    <label>Create User</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

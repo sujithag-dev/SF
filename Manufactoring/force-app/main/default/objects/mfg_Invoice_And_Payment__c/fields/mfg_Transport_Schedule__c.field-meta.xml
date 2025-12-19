@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Transport_Schedule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Transport Schedule</label>
+    <referenceTo>mfg_Transport_And_Schedule__c</referenceTo>
+    <relationshipLabel>Invoice And Payments</relationshipLabel>
+    <relationshipName>Invoice_And_Payments</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>mfg Customer Opportunity Stage</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>mfg_Reason__c</fieldNames>
+        <fieldNames>MainCompetitors__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Specify the Reason&lt;/strong&gt; - Select the most accurate reason for losing the deal (e.g., competitor pricing, customer budget, internal delay, or requirement change). This helps track loss patterns and improve strategy.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Update Main Competitor (if applicable)&lt;/strong&gt; - Fill in this field &lt;strong&gt;only when the opportunity is lost due to a competitor&lt;/strong&gt;. Identifying which competitor won supports better market analysis and sales improvement.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Capture Customer Feedback&lt;/strong&gt; - Record customer input on why the deal was not finalized to refine offerings and negotiation approaches.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Update Final Details&lt;/strong&gt; - Ensure the opportunity record is complete with all communications, quotes, and closing notes.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Review for Future Follow-up&lt;/strong&gt; -Note if the customer may re-engage later and plan accordingly.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Closed Lost</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Verify Final Details&lt;/strong&gt; – Ensure all opportunity information such as product, pricing, and quantity matches the approved quote.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Confirm Order Completion&lt;/strong&gt; – Check that the synced order and related documents are accurate and approved for processing.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Update Payment and Delivery Info&lt;/strong&gt; – Record payment confirmation, delivery schedule, or handover details to operations.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Notify Internal Teams&lt;/strong&gt; – Inform fulfillment, finance, and support teams to initiate post-sales processes.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Capture Customer Feedback&lt;/strong&gt; – Document positive inputs or improvement suggestions for future reference.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Celebrate and Close Properly&lt;/strong&gt; – Mark the opportunity as &lt;em&gt;Closed Won&lt;/em&gt;, ensuring all related records (quotes, orders, activities) are complete and consistent.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Closed Won</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>mfg_Transport_And_Schedule__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Plan Transport And Schedule:&lt;/strong&gt; Confirm transport dates, routes, and delivery mode based on the customer’s preferred timeline.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Coordinate with Logistics Team:&lt;/strong&gt; Ensure dispatch readiness and resource allocation for timely delivery.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Verify Delivery Address &amp;amp; Contact:&lt;/strong&gt; Double-check customer delivery details to avoid shipment errors.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Track Delivery Progress:&lt;/strong&gt; Monitor the shipment status and communicate updates to the customer proactively.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Document Completion:&lt;/strong&gt; Record delivery confirmation and update any proof of delivery for tracking and audit purposes.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Delivery / Transport Schedule</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>mfg_DocumentTypes__c</fieldNames>
+        <fieldNames>mfg_DocumentsAttached__c</fieldNames>
+        <fieldNames>mfg_DocumentVerificationStatus__c</fieldNames>
+        <fieldNames>mfg_DocumentVerificationDate__c</fieldNames>
+        <fieldNames>mfg_DocumentVerificationFeedback__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Select Document Types:&lt;/strong&gt; Choose the correct document category (e.g., Financial, Address Proof, ID Proof) as required.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Attach Required Documents:&lt;/strong&gt; Upload all necessary files in the &lt;em&gt;Documents Attached&lt;/em&gt; field before submission.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Update Verification Status:&lt;/strong&gt; Set the status to Submitted, In Review, Verified, or Rejected based on progress.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Record Verification Date:&lt;/strong&gt; Enter the completion date for accurate audit tracking.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Provide Feedback:&lt;/strong&gt; Add remarks in &lt;em&gt;Document Verification Feedback&lt;/em&gt; for missing or incorrect details.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Document Review</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>mfg_Invoice_And_Payment__c</fieldNames>
+        <fieldNames>mfg_Initiate_Sales_Agreement__c</fieldNames>
+        <info>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Initiate Sales Agreement:&lt;/strong&gt; Enable this option to create a Sales Agreement.                    It will be generated using the synced Order details from this Opportunity.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Generate Invoice:&lt;/strong&gt; Create the invoice with accurate order details, taxes, and payment terms.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Verify Accuracy:&lt;/strong&gt; Double-check invoice number, customer details, and billed amounts before sending.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Share with Customer:&lt;/strong&gt; Send the invoice promptly and confirm receipt.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Track Payment Status:&lt;/strong&gt; Monitor payments against due dates and update status accordingly.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Follow Up:&lt;/strong&gt; Communicate proactively for pending or delayed payments and document all interactions.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Invoice / Payment</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>mfg_Quote_Status__c</fieldNames>
+        <fieldNames>mfg_PaymentTerms__c</fieldNames>
+        <fieldNames>mfg_PlanningToBuy__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Review Quote Status:&lt;/strong&gt; Confirm the quote has final pricing, product details, and approved discounts before sharing.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Confirm Payment Terms:&lt;/strong&gt; Select the correct payment option based on discussions and approvals, ensuring mutual agreement on schedules.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Assess Purchase Timeline:&lt;/strong&gt; Identify when the customer plans to buy for accurate forecasting and follow-ups.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Address Objections:&lt;/strong&gt; Resolve pricing, delivery, or product concerns promptly to maintain trust.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Obtain Approvals:&lt;/strong&gt; Secure internal approvals for revised terms or discounts and document all negotiation details.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Negotiation</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>mfg_Reason__c</fieldNames>
+        <fieldNames>mfg_ExpectedResumeDate__c</fieldNames>
+        <fieldNames>MainCompetitors__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Specify the Reason&lt;/strong&gt; - Select or mention why the opportunity is on hold (e.g., budget issues, internal delays, or customer decision pending) to track and analyze delay trends.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Set Expected Resume Date&lt;/strong&gt; - Enter a realistic date for resuming progress to maintain pipeline visibility and timely follow-ups.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Communicate with Customer&lt;/strong&gt; - Keep the customer updated on status and next steps to maintain engagement and trust.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Review Internal Dependencies&lt;/strong&gt; - Identify and resolve any internal blockers or pending approvals causing the delay.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Monitor Regularly&lt;/strong&gt; - Revisit on-hold deals to decide whether to resume, close, or requalify based on updated info.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Update Main Competitor -&lt;/strong&gt; Complete this field only if the deal is on hold due to competitor involvement.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>On Hold</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>mfg_Synced_Order__c</fieldNames>
+        <fieldNames>mfg_Order_Number__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Sync the Order:&lt;/strong&gt; Sync the order with the opportunity after customer approvals and internal checks to keep systems consistent.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Verify Order Number:&lt;/strong&gt; Confirm the Order Number is auto-generated or correctly entered for accurate tracking.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Cross-check Order Details:&lt;/strong&gt; Validate quantities, pricing, and discounts before finalizing the synced order.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Coordinate with Operations:&lt;/strong&gt; Share confirmed order details with fulfillment/delivery teams for timely execution.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Maintain Documentation:&lt;/strong&gt; Keep records of the synced order and related documents for compliance and audits.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Order</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>mfg_Product_Family__c</fieldNames>
+        <fieldNames>mfg_Product_Subcategory__c</fieldNames>
+        <fieldNames>mfg_Primary_Contact__c</fieldNames>
+        <fieldNames>mfg_DealerAcknowledged__c</fieldNames>
+        <fieldNames>mfg_Key_Requirements_Notes__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Confirm Product Family And SubCategory:&lt;/strong&gt; Ensure the selected product family and Subcategory aligns with the customer’s business needs.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Verify Dealer Acknowledgement:&lt;/strong&gt; Confirm the dealer has reviewed and acknowledged the opportunity.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Document Key Requirements/Notes:&lt;/strong&gt; Record the customer’s main needs, preferences, and expectations for accurate quoting.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Ensure Primary Contact Added and Validated:&lt;/strong&gt; Add and verify the main customer contact for effective communication and follow-ups.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Qualification</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>SyncedQuoteId</fieldNames>
+        <fieldNames>mfg_Discount__c</fieldNames>
+        <fieldNames>Pricebook2Id</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Select Appropriate Price Book:&lt;/strong&gt; Choose the correct price book based on customer type, region, or product category to prevent pricing errors.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Create and Sync Quote:&lt;/strong&gt; Generate a quote with accurate products, quantities, and pricing, then sync the most relevant quote with the opportunity.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Apply Discount (if applicable):&lt;/strong&gt; Apply discounts per company policy or approval limits, ensuring they’re justified and documented.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Verify Quote Accuracy:&lt;/strong&gt; Review product configurations, taxes, and terms before sending the quote to the customer.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Communicate Clearly with Customer:&lt;/strong&gt; Share the quote promptly and confirm the customer’s understanding of pricing, inclusions, and validity.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Quotation</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>mfg_Customer_Opportunity_Recordtype</recordTypeName>
+</PathAssistant>
