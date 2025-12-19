@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>mfg_Agreement_Product_Schedule_Compact_Layout</fullName>
-    <fields>mfg_Period_Label__c</fields>
-    <fields>mfg_Schedule_Start_Date__c</fields>
-    <fields>mfg_Schedule_End_Date__c</fields>
-    <label>Agreement Product Schedule Compact Layout</label>
-</CompactLayout>
