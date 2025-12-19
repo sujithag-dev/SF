@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Source__c</fullName>
+    <label>Lead Source</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FACEBOOK</fullName>
+                <default>false</default>
+                <label>FACEBOOK</label>
+            </value>
+            <value>
+                <fullName>INSTAGRAM</fullName>
+                <default>false</default>
+                <label>INSTAGRAM</label>
+            </value>
+            <value>
+                <fullName>WHATSAPP</fullName>
+                <default>false</default>
+                <label>WHATSAPP</label>
+            </value>
+            <value>
+                <fullName>TAWK-TO-CHAT</fullName>
+                <default>false</default>
+                <label>TAWK-TO-CHAT</label>
+            </value>
+            <value>
+                <fullName>WECHAT</fullName>
+                <default>false</default>
+                <label>WECHAT</label>
+            </value>
+            <value>
+                <fullName>KAKAOTALK</fullName>
+                <default>false</default>
+                <label>KAKAOTALK</label>
+            </value>
+            <value>
+                <fullName>OPEN DAY &amp; INFO DAY</fullName>
+                <default>false</default>
+                <label>OPEN DAY &amp; INFO DAY</label>
+            </value>
+            <value>
+                <fullName>PHONE INQUIRY</fullName>
+                <default>false</default>
+                <label>PHONE INQUIRY</label>
+            </value>
+            <value>
+                <fullName>EMAIL</fullName>
+                <default>false</default>
+                <label>EMAIL</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

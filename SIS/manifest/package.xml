@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>*</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
+		<members>LeadManagementSIS</members>
+		<members>Salesforce_With_EMX</members>
+		<name>ConnectedApp</name>
+	</types>
+	<types>
+		<members>SIS</members>
+		<name>CustomApplication</name>
+	</types>
+	<types>
+		<members>SIS_HostUrl</members>
+		<members>SIS_clientID</members>
+		<name>CustomLabel</name>
+	</types>
+	<types>
+		<members>SIS_Notification_To_Lead_Owner_For_Round_Robin</members>
+		<name>CustomNotificationType</name>
+	</types>
+	<types>
+		<members>Account</members>
+		<members>Account</members>
+		<members>Contact</members>
+		<members>Intake_Master__c</members>
+		<members>Lead</members>
+		<members>Parent_Lead__c</members>
+		<members>Programme_Application__c</members>
+		<members>Programme_Master__c</members>
+		<members>RoundRobinSetting__c</members>
+		<members>SIS_Integration_log__c</members>
+		<members>SIS_Round_Robin__mdt</members>
+		<members>Student__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>CustomTab</name>
+	</types>
+	<types>
+		<members>ApplicationandEnrollment/NotdccqDAZoMkoAsaOBnmSiLLCJsgs</members>
+		<members>LeadsDashboard/hNbsdOJcOzFUaaBRZFiKSQToBGYxCs</members>
+		<name>Dashboard</name>
+	</types>
+	<types>
+		<members>Account.SIS_Find_Duplicate_Account_Duplicate_Rule</members>
+		<members>Contact.SIS_Find_Duplicate_Contact_Duplicate_Rule</members>
+		<members>Lead.SIS_Find_Duplicate_Phone_Name_DOB_Email_Duplicate_Rule</members>
+		<members>Parent_Lead__c.SIS_Find_Duplicate_Email_And_Mobile_Number_Duplicate_Rule</members>
+		<members>Student__c.SIS_Find_Duplicate_Student_Duplicate_Rule</members>
+		<name>DuplicateRule</name>
+	</types>
+	<types>
+		<members>Child_Lead_Record_Page1</members>
+		<members>Intake_Master_Record_Page1</members>
+		<members>Parent_Account_Record_Page</members>
+		<members>Parent_Account_Record_Page_For_Campus</members>
+		<members>Parent_Contact_Record_Page</members>
+		<members>Parent_Lead_Record_Page</members>
+		<members>Programme_Application_Record_Page</members>
+		<members>Programme_Application_Record_Page1</members>
+		<members>Programme_Master_Record_Page</members>
+		<members>SIS_Integration_Log_Record_Page</members>
+		<members>SIS_UtilityBar</members>
+		<members>Student_Record_Page</members>
+		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Flow</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>FlowDefinition</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>GlobalValueSet</name>
+	</types>
+	<types>
+		<members>Account-Account Layout</members>
+		<members>Account-Campus ID</members>
+		<members>Contact-Contact Layout</members>
+		<members>Intake_Master__c-Intake Master Layout</members>
+		<members>Lead-Child Lead Layout</members>
+		<members>Parent_Lead__c-Parent Lead Layout</members>
+		<members>Programme_Application__c-Programme Application Layout For Immigration Student</members>
+		<members>Programme_Application__c-Programme Application Layout For Malaysian Student</members>
+		<members>Programme_Master__c-Programme Master Layout</members>
+		<members>SIS_Integration_log__c-SIS Integration Log Layout</members>
+		<members>Student__c-Student Layout</members>
+		<name>Layout</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<types>
+		<members>Account.SIS_Find_Duplicate_Account_Matching_Rule</members>
+		<members>Contact.SIS_Find_Duplicate_Contact_Matching_Rule</members>
+		<members>Lead.SIS_Matching_Rule_For_ChildLead</members>
+		<members>Parent_Lead__c.SIS_Matching_Rule_For_Parent_Lead</members>
+		<members>Student__c.SIS_Find_Duplicate_Student_Matching_Rule</members>
+		<name>MatchingRule</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>NamedCredential</name>
+	</types>
+	<types>
+		<members>Default</members>
+		<members>SIS_Path_For_PA_International_Student</members>
+		<members>SIS_Path_For_PA_Malaysian_Student</members>
+		<name>PathAssistant</name>
+	</types>
+	<types>
+		<members>Admin</members>
+		<members>Admissions Marketing</members>
+		<members>Admissions and IO</members>
+		<members>Minimum Access - API Only Integrations</members>
+		<members>System Admin</members>
+		<name>Profile</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Queue</name>
+	</types>
+	<types>
+		<members>Lead.Convert_Lead</members>
+		<members>Lead.Send_Email</members>
+		<members>Student__c.Send_Email</members>
+		<name>QuickAction</name>
+	</types>
+	<types>
+		<members>ApplicationandEnrollment/Application_by_IntakeProgrammeCountry_iod</members>
+		<members>ApplicationandEnrollment/Application_by_IntakeProgrammePIC_Hrm</members>
+		<members>ApplicationandEnrollment/Enrollment_by_IntakeProgrammeCountry_mN1</members>
+		<members>ApplicationandEnrollment/Enrollment_by_IntakeProgrammePIC_MbM</members>
+		<members>ApplicationandEnrollment/Percentage_Enrolled_Report_QA0</members>
+		<members>LeadsDetailsReports/Child_Leads_by_Programme_xWl</members>
+		<members>LeadsDetailsReports/Leads_by_Owner_mSh</members>
+		<members>LeadsDetailsReports/Leads_by_lead_source_a28</members>
+		<members>LeadsDetailsReports/Leads_by_lead_status_and_stage_snd</members>
+		<members>LeadsDetailsReports/PICUser_Touchpoints_yFF</members>
+		<name>Report</name>
+	</types>
+	<version>64.0</version>
+</Package>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campus_SFID__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Campus SFID</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Please Select a Valid Campus</errorMessage>
+        <filterItems>
+            <field>Account.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Campus_ID</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Programme Masters</relationshipLabel>
+    <relationshipName>Programme_Masters</relationshipName>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

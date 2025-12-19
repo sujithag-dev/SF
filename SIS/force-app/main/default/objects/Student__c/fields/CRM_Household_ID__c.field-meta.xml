@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Household_ID__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASESAFEID(
+  IF(  
+    ISBLANK(Parent_Account__r.Primary_Account__c),  
+    Parent_Account__r.Id,  
+    Parent_Account__r.Primary_Account__c
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CRM Household ID</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

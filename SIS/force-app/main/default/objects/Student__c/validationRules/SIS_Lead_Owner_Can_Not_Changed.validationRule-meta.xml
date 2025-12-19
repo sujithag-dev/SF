@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_Lead_Owner_Can_Not_Changed</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(OwnerId),
+    OR(
+        $Profile.Name = &quot;Admissions Marketing&quot;,
+        $Profile.Name = &quot;Admissions and IO&quot;
+    )
+)</errorConditionFormula>
+    <errorMessage>You are not allowed to change the Owner</errorMessage>
+</ValidationRule>

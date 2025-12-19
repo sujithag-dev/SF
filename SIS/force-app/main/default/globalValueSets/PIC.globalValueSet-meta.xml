@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>DAVIDK</fullName>
+        <default>false</default>
+        <label>David Khor Shen Lih</label>
+    </customValue>
+    <customValue>
+        <fullName>WEEVIANC</fullName>
+        <default>false</default>
+        <label>Chan Wee Vian</label>
+    </customValue>
+    <customValue>
+        <fullName>SHINLINC</fullName>
+        <default>false</default>
+        <label>Chong Shin Lin</label>
+    </customValue>
+    <customValue>
+        <fullName>LAILINGT</fullName>
+        <default>false</default>
+        <label>Tan Lai Ling</label>
+    </customValue>
+    <customValue>
+        <fullName>YUETTINGW</fullName>
+        <default>false</default>
+        <label>Wong Yuet Ting</label>
+    </customValue>
+    <customValue>
+        <fullName>FUNFUNL</fullName>
+        <default>false</default>
+        <label>Low Fun Fun</label>
+    </customValue>
+    <customValue>
+        <fullName>ASTRIDC</fullName>
+        <default>false</default>
+        <label>Astrid Chung Lai Heng</label>
+    </customValue>
+    <customValue>
+        <fullName>CHERYLLPP</fullName>
+        <default>false</default>
+        <label>Cheryl Lai Poh Pheng</label>
+    </customValue>
+    <customValue>
+        <fullName>FYNTAY</fullName>
+        <default>false</default>
+        <label>Fyn Tay Lee Choon</label>
+    </customValue>
+    <customValue>
+        <fullName>YONGKEANL</fullName>
+        <default>false</default>
+        <label>Leow Yong Kean</label>
+    </customValue>
+    <customValue>
+        <fullName>VERONICAQ</fullName>
+        <default>false</default>
+        <label>Veronica Quek Siew Hoon</label>
+    </customValue>
+    <customValue>
+        <fullName>YEECHANGW</fullName>
+        <default>false</default>
+        <label>Wong Yee Chang</label>
+    </customValue>
+    <customValue>
+        <fullName>CYBOH</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CYBOH</label>
+    </customValue>
+    <masterLabel>PIC</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

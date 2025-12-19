@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_Intake_Number_Should_Be_Number</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  NOT(ISBLANK( Intake_Number__c )),
+  NOT(ISNUMBER( Intake_Number__c ))
+)</errorConditionFormula>
+    <errorMessage>Please enter a valid number.</errorMessage>
+</ValidationRule>

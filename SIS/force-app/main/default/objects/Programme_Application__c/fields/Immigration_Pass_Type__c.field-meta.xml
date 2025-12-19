@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Immigration_Pass_Type__c</fullName>
+    <label>Immigration Pass Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>DEPENDENT (DIPLOMATIC)</fullName>
+                <default>false</default>
+                <label>DEPENDENT (DIPLOMATIC)</label>
+            </value>
+            <value>
+                <fullName>DEPENDENT (EXPATRIATE/EMPLOYMENT)</fullName>
+                <default>false</default>
+                <label>DEPENDENT (EXPATRIATE/EMPLOYMENT)</label>
+            </value>
+            <value>
+                <fullName>DEPENDENT (MM2H)</fullName>
+                <default>false</default>
+                <label>DEPENDENT (MM2H)</label>
+            </value>
+            <value>
+                <fullName>DEPENDENT (RESIDENT PASS TALENT)</fullName>
+                <default>false</default>
+                <label>DEPENDENT (RESIDENT PASS TALENT)</label>
+            </value>
+            <value>
+                <fullName>DEPENDENT PASS</fullName>
+                <default>false</default>
+                <label>DEPENDENT PASS</label>
+            </value>
+            <value>
+                <fullName>DIPLOMATIC PASS</fullName>
+                <default>false</default>
+                <label>DIPLOMATIC PASS</label>
+            </value>
+            <value>
+                <fullName>EMGS APPROVAL LETTER</fullName>
+                <default>false</default>
+                <label>EMGS APPROVAL LETTER</label>
+            </value>
+            <value>
+                <fullName>EMPLOYMENT PASS</fullName>
+                <default>false</default>
+                <label>EMPLOYMENT PASS</label>
+            </value>
+            <value>
+                <fullName>EXEMPTED (MAIN PROGRAMME)</fullName>
+                <default>false</default>
+                <label>EXEMPTED (MAIN PROGRAMME)</label>
+            </value>
+            <value>
+                <fullName>EXEMPTED (MC)</fullName>
+                <default>false</default>
+                <label>EXEMPTED (MC)</label>
+            </value>
+            <value>
+                <fullName>EXEMPTED (ODL)</fullName>
+                <default>false</default>
+                <label>EXEMPTED (ODL)</label>
+            </value>
+            <value>
+                <fullName>MALAYSIAN PR</fullName>
+                <default>false</default>
+                <label>MALAYSIAN PR</label>
+            </value>
+            <value>
+                <fullName>MM2H</fullName>
+                <default>false</default>
+                <label>MM2H</label>
+            </value>
+            <value>
+                <fullName>PERMISSION TO STUDY</fullName>
+                <default>false</default>
+                <label>PERMISSION TO STUDY</label>
+            </value>
+            <value>
+                <fullName>PREVIOUS INSTITUTION STP</fullName>
+                <default>false</default>
+                <label>PREVIOUS INSTITUTION STP</label>
+            </value>
+            <value>
+                <fullName>RESIDENCE PASS</fullName>
+                <default>false</default>
+                <label>RESIDENCE PASS</label>
+            </value>
+            <value>
+                <fullName>SOCIAL PASS</fullName>
+                <default>false</default>
+                <label>SOCIAL PASS</label>
+            </value>
+            <value>
+                <fullName>SPECIAL PASS</fullName>
+                <default>false</default>
+                <label>SPECIAL PASS</label>
+            </value>
+            <value>
+                <fullName>STUDENT PASS</fullName>
+                <default>false</default>
+                <label>STUDENT PASS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Offer_Status__c</fullName>
+    <label>Offer Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pending For Approval</fullName>
+                <default>true</default>
+                <label>Pending For Approval</label>
+            </value>
+            <value>
+                <fullName>Full Offer</fullName>
+                <default>false</default>
+                <label>Full Offer</label>
+            </value>
+            <value>
+                <fullName>Conditional Offer</fullName>
+                <default>false</default>
+                <label>Conditional Offer</label>
+            </value>
+            <value>
+                <fullName>Reject</fullName>
+                <default>false</default>
+                <label>Reject</label>
+            </value>
+            <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                <label>Cancelled</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

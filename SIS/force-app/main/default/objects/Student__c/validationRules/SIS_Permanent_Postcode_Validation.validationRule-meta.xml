@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_Permanent_Postcode_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+      NOT( ISBLANK(  Postcode_p__c )) ,
+      NOT(REGEX( Postcode_p__c , &quot;^[0-9]+$&quot;))
+   )</errorConditionFormula>
+    <errorMessage>Permanent Postcode  should only contain numbers.</errorMessage>
+</ValidationRule>

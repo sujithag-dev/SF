@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Malaysian_Student</fullName>
+    <active>true</active>
+    <label>Malaysian Student</label>
+    <picklistValues>
+        <picklist>Application_Type__c</picklist>
+        <values>
+            <fullName>NEW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PROGRESSION</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Immigration_Pass_Type__c</picklist>
+        <values>
+            <fullName>DEPENDENT %28DIPLOMATIC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DEPENDENT %28EXPATRIATE%2FEMPLOYMENT%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DEPENDENT %28MM2H%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DEPENDENT %28RESIDENT PASS TALENT%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DEPENDENT PASS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIPLOMATIC PASS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMGS APPROVAL LETTER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMPLOYMENT PASS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EXEMPTED %28MAIN PROGRAMME%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EXEMPTED %28MC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EXEMPTED %28ODL%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MALAYSIAN PR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MM2H</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PERMISSION TO STUDY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PREVIOUS INSTITUTION STP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RESIDENCE PASS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SOCIAL PASS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPECIAL PASS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STUDENT PASS</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lost_Reason__c</picklist>
+        <values>
+            <fullName>Accommodation%2F facilities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bad review%2F WOM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Family</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fees related</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job related</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Location</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Programme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scholarship related</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sibling rejection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unwilling to disclose</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Offer_Status__c</picklist>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conditional Offer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Full Offer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending For Approval</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Reject</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>PIC__c</picklist>
+        <values>
+            <fullName>ASTRIDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHERYLLPP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DAVIDK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FUNFUNL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FYNTAY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LAILINGT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SHINLINC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VERONICAQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WEEVIANC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YEECHANGW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YONGKEANL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YUETTINGW</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Programme_Application_Status__c</picklist>
+        <values>
+            <fullName>Applied</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Declined %28Lost%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrolled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-enroll</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qualified</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RA%2Fe-RA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

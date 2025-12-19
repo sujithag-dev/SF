@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Programme_Application_Status__c</fullName>
+    <label>Programme Application Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Applied</fullName>
+                <default>true</default>
+                <label>Applied</label>
+            </value>
+            <value>
+                <fullName>Pre-enroll</fullName>
+                <default>false</default>
+                <label>Pre-enroll</label>
+            </value>
+            <value>
+                <fullName>Pending Enrollment</fullName>
+                <default>false</default>
+                <label>Pending Enrollment</label>
+            </value>
+            <value>
+                <fullName>RA/e-RA</fullName>
+                <default>false</default>
+                <label>RA/e-RA</label>
+            </value>
+            <value>
+                <fullName>Declined (Lost)</fullName>
+                <default>false</default>
+                <label>Declined (Lost)</label>
+            </value>
+            <value>
+                <fullName>Enrolled</fullName>
+                <default>false</default>
+                <label>Enrolled</label>
+            </value>
+            <value>
+                <fullName>Qualified</fullName>
+                <default>false</default>
+                <label>Qualified</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Rejected</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

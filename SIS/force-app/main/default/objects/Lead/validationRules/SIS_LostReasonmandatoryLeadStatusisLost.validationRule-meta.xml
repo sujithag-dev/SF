@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_LostReasonmandatoryLeadStatusisLost</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+        TEXT(Status)=&quot;LOST&quot;,
+        ISBLANK(TEXT(Lost_reason__c)) 
+ )</errorConditionFormula>
+    <errorDisplayField>Lost_reason__c</errorDisplayField>
+    <errorMessage>Lost Reason is required when the Lead Status is Lost.</errorMessage>
+</ValidationRule>

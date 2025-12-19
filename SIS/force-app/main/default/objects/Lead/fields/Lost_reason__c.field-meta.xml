@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lost_reason__c</fullName>
+    <label>Lost reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Status</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FEES RELATED</fullName>
+                <default>false</default>
+                <label>FEES RELATED</label>
+            </value>
+            <value>
+                <fullName>SCHOLARSHIP RELATED</fullName>
+                <default>false</default>
+                <label>SCHOLARSHIP RELATED</label>
+            </value>
+            <value>
+                <fullName>LOCATION</fullName>
+                <default>false</default>
+                <label>LOCATION</label>
+            </value>
+            <value>
+                <fullName>JOB RELATED</fullName>
+                <default>false</default>
+                <label>JOB RELATED</label>
+            </value>
+            <value>
+                <fullName>FAMILY</fullName>
+                <default>false</default>
+                <label>FAMILY</label>
+            </value>
+            <value>
+                <fullName>SIBLING REJECTION</fullName>
+                <default>false</default>
+                <label>SIBLING REJECTION</label>
+            </value>
+            <value>
+                <fullName>PROGRAMME</fullName>
+                <default>false</default>
+                <label>PROGRAMME</label>
+            </value>
+            <value>
+                <fullName>BAD REVIEW/ WOM</fullName>
+                <default>false</default>
+                <label>BAD REVIEW/ WOM</label>
+            </value>
+            <value>
+                <fullName>ACCOMMODATION/ FACILITIES</fullName>
+                <default>false</default>
+                <label>ACCOMMODATION/ FACILITIES</label>
+            </value>
+            <value>
+                <fullName>UNWILLING TO DISCLOSE</fullName>
+                <default>false</default>
+                <label>UNWILLING TO DISCLOSE</label>
+            </value>
+            <value>
+                <fullName>NOT ELIGIBLE TO JOIN</fullName>
+                <default>false</default>
+                <label>NOT ELIGIBLE TO JOIN</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>FEES RELATED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>SCHOLARSHIP RELATED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>LOCATION</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>JOB RELATED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>FAMILY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>SIBLING REJECTION</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>PROGRAMME</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>BAD REVIEW/ WOM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>ACCOMMODATION/ FACILITIES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>UNWILLING TO DISCLOSE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LOST</controllingFieldValue>
+            <valueName>NOT ELIGIBLE TO JOIN</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

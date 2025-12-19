@@ -1,0 +1,185 @@
+<template>
+    <!-- <lightning-card> -->
+    <div style="position: sticky; top:0">
+        <p class="slds-text-align_center slds-border_bottom" style="font-weight: bold; font-size: 25px;">Convert
+            Lead
+        </p>
+    </div>
+    <div style="height: 24rem; overflow:auto">
+        <lightning-spinner if:true={isLoading} alternative-text="Loading....." variant="brand" size="medium"
+            style="background: white; z-index: 9000;" class="child"></lightning-spinner>
+        <div if:true={parentLead}>
+            <p class="slds-m-around_x-small" style="font-weight: bold; font-size: 20px; background: #80808029;">Parent
+                Account</p>
+            <lightning-record-view-form record-id={parentLead} object-api-name="Parent_Lead__c">
+                <div class="slds-grid slds-wrap slds-m-left_xx-large slds-m-right_xx-large slds-theme_default" style="line-height: 12px;">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Parent_Relationship__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Passport_IC__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Email__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Mobile_Number_1__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Street__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="City__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="State_Province__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Country__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Postcode__c"></lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+        <div if:true={parentLead}>
+            <p class="slds-m-around_x-small" style="font-weight: bold; font-size: 20px; background: #80808029;">Parent
+                Contact</p>
+            <lightning-record-view-form record-id={parentLead} object-api-name="Parent_Lead__c">
+                <div class="slds-grid slds-wrap slds-m-left_xx-large slds-m-right_xx-large slds-theme_default" style="line-height: 12px;">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Passport_IC__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Parent_Relationship__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Mobile_Number_1__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Email__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Company__c"></lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+        <div if:true={parentAccount}>
+            <p class="slds-m-around_x-small" style="font-weight: bold; font-size: 20px; background: #80808029;">Parent
+                Account</p>
+            <lightning-record-view-form record-id={parentAccount} object-api-name="Account">
+                <div class="slds-grid slds-wrap slds-m-left_xx-large slds-m-right_xx-large slds-theme_default" style="line-height: 12px;">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field
+                            field-name="Parent_Relationship_Father_Mother__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Parent_NRIC_Passport_No__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Parent_Email_Address__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Phone"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Street__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="City__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="State__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Country__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Postcode__c"></lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+        <div if:true={parentContact}>
+            <p class="slds-m-around_x-small" style="font-weight: bold; font-size: 20px; background: #80808029;">Parent
+                Contact</p>
+            <lightning-record-view-form record-id={parentContact} object-api-name="Contact">
+                <div class="slds-grid slds-wrap slds-m-left_xx-large slds-m-right_xx-large slds-theme_default" style="line-height: 12px;">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="NRIC_Passport_No__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Relationship__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="MobilePhone"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Email"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Company__c"></lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+        <div if:true={student}>
+            <p class="slds-m-around_x-small" style="font-weight: bold; font-size: 20px; background: #80808029;">Student
+            </p>
+            <lightning-record-view-form record-id={student} object-api-name="Lead">
+                <div class="slds-grid slds-wrap slds-m-left_xx-large slds-m-right_xx-large slds-theme_default" style="line-height: 12px;">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Passport_IC__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Passport_Expiry__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Date_of_Birth__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Nationality__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Citizenship__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="GenderIdentity"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Mobile_Phone_1__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Email"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="PIC__c"></lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+    </div>
+    <div class="slds-border_top" style="position: sticky; bottom:0">
+        <lightning-button class="slds-m-around_x-small slds-float_right" variant="brand" label="Convert" title="Convert"
+            onclick={handleConvertButton}></lightning-button>
+    </div>
+
+    <!-- </lightning-card> -->
+</template>

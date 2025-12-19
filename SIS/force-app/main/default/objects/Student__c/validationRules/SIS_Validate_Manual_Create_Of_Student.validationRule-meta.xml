@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_Validate_Manual_Create_Of_Student</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISNEW(),
+    ISBLANK(Parent_Account__c)
+)</errorConditionFormula>
+    <errorMessage>A Parent Account is required to create a Student.</errorMessage>
+</ValidationRule>

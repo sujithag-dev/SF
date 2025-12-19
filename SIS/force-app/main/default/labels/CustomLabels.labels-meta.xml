@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>SIS_HostUrl</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIS_HostUrl</shortDescription>
+        <value>https://emsapi.sunway.edu.my/sisapidev</value>
+    </labels>
+    <labels>
+        <fullName>SIS_clientID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIS_clientID</shortDescription>
+        <value>ebb238c4ef2adabc241dbdc21a90b15c</value>
+    </labels>
+</CustomLabels>

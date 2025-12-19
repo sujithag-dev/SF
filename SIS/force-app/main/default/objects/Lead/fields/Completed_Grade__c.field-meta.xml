@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Completed_Grade__c</fullName>
+    <label>Completed Grade</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GRADE 1 / YEAR 1</fullName>
+                <default>false</default>
+                <label>GRADE 1 / YEAR 1</label>
+            </value>
+            <value>
+                <fullName>GRADE 2 / YEAR 2</fullName>
+                <default>false</default>
+                <label>GRADE 2 / YEAR 2</label>
+            </value>
+            <value>
+                <fullName>GRADE 3 / YEAR 3</fullName>
+                <default>false</default>
+                <label>GRADE 3 / YEAR 3</label>
+            </value>
+            <value>
+                <fullName>GRADE 4 / YEAR 4</fullName>
+                <default>false</default>
+                <label>GRADE 4 / YEAR 4</label>
+            </value>
+            <value>
+                <fullName>GRADE 5 / YEAR 5</fullName>
+                <default>false</default>
+                <label>GRADE 5 / YEAR 5</label>
+            </value>
+            <value>
+                <fullName>GRADE 6 / YEAR 6</fullName>
+                <default>false</default>
+                <label>GRADE 6 / YEAR 6</label>
+            </value>
+            <value>
+                <fullName>GRADE 7 / YEAR 7</fullName>
+                <default>false</default>
+                <label>GRADE 7 / YEAR 7</label>
+            </value>
+            <value>
+                <fullName>GRADE 8 / YEAR 8</fullName>
+                <default>false</default>
+                <label>GRADE 8 / YEAR 8</label>
+            </value>
+            <value>
+                <fullName>GRADE 9 / YEAR 9</fullName>
+                <default>false</default>
+                <label>GRADE 9 / YEAR 9</label>
+            </value>
+            <value>
+                <fullName>GRADE 10 / YEAR 10</fullName>
+                <default>false</default>
+                <label>GRADE 10 / YEAR 10</label>
+            </value>
+            <value>
+                <fullName>GRADE 11 / YEAR 11</fullName>
+                <default>false</default>
+                <label>GRADE 11 / YEAR 11</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

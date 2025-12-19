@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>For_Mandatory_Fields_Missed_In_Student</name>
+        <label>For Mandatory Fields Missed In Student</label>
+        <locationX>50</locationX>
+        <locationY>719</locationY>
+        <customErrorMessages>
+            <errorMessage>Please fill these fields in Student before creating a Programme Application: 
+
+{!CheckStudentMandatoryFields}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>For_Mandatory_Fields_With_Condition_Missed_In_Programme_Application</name>
+        <label>For Mandatory Fields With Condition Missed In Programme Application</label>
+        <locationX>578</locationX>
+        <locationY>719</locationY>
+        <customErrorMessages>
+            <errorMessage>Please fill these fields in Programme Application: 
+
+{!CheckProgrammeApplicationmandatoryFields}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>For_Mandatory_Fields_With_Condition_Missed_In_Student</name>
+        <label>For Mandatory Fields With Condition Missed In Student</label>
+        <locationX>314</locationX>
+        <locationY>719</locationY>
+        <customErrorMessages>
+            <errorMessage>Please fill these fields in Student before creating a Programme Application: 
+
+{!CheckStudentMandatoryFieldsWithCondition}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>For_Nationality_Missed_In_Student</name>
+        <label>For Nationality Missed In Student</label>
+        <locationX>1370</locationX>
+        <locationY>503</locationY>
+        <customErrorMessages>
+            <errorMessage>Please select ▸ Nationality in Student before creating a Programme Application.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>For_Wrong_Record_Type</name>
+        <label>For Wrong Record Type</label>
+        <locationX>1106</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>You have selected the wrong Record Type!
+For Malaysian Student, select &apos;Malaysian Student&apos; Record Type.
+For Non-Citizen Student, select &apos;International Student&apos; Record Type.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_Mandatory_Fields_Missed_Or_Not</name>
+        <label>Check Mandatory Fields Missed Or Not</label>
+        <locationX>446</locationX>
+        <locationY>611</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Mandatory_Fields_Missed_In_Student</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CheckStudentMandatoryFields</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>For_Mandatory_Fields_Missed_In_Student</targetReference>
+            </connector>
+            <label>Mandatory Fields Missed In Student</label>
+        </rules>
+        <rules>
+            <name>Mandatory_Fields_With_Condition_Missed_In_Student</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CheckStudentMandatoryFieldsWithCondition</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>For_Mandatory_Fields_With_Condition_Missed_In_Student</targetReference>
+            </connector>
+            <label>Mandatory Fields With Condition Missed In Student</label>
+        </rules>
+        <rules>
+            <name>Mandatory_Fields_In_Programme_Application_Missed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CheckProgrammeApplicationmandatoryFields</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>For_Mandatory_Fields_With_Condition_Missed_In_Programme_Application</targetReference>
+            </connector>
+            <label>Mandatory Fields In Programme Application Missed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Student_Nationality</name>
+        <label>Check Student Nationality</label>
+        <locationX>1073</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>For_Nationality_Missed_In_Student</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Nationality_Has_Value</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Student_Record.Nationality__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_The_Correct_Record_Type_Is_Selected_Or_Not</targetReference>
+            </connector>
+            <label>Nationality Has Value</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_The_Correct_Record_Type_Is_Selected_Or_Not</name>
+        <label>Check The Correct Record Type Is Selected Or Not</label>
+        <locationX>776</locationX>
+        <locationY>503</locationY>
+        <defaultConnector>
+            <targetReference>For_Wrong_Record_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Wrong_Record_Type</name>
+            <conditionLogic>(1 AND 2) OR (3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Student_Record.Citizenship__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>MALAYSIAN</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Malaysian_Student</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Student_Record.Citizenship__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NON-CITIZEN</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>International_Student</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Mandatory_Fields_Missed_Or_Not</targetReference>
+            </connector>
+            <label>Wrong Record Type</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>CheckProgrammeApplicationmandatoryFields</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK(TEXT({!$Record.Offer_Status__c})), &quot; ▸ Offer Status&quot;, &quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>CheckStudentMandatoryFields</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK(TEXT({!Get_Student_Record.Gender__c})), &quot; ▸ Gender&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT({!Get_Student_Record.Marital_Status__c})), &quot; ▸ Marital Status&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT({!Get_Student_Record.Religion__c})), &quot; ▸ Religion&quot;, &quot;&quot;) &amp;
+IF(ISBLANK({!Get_Student_Record.Street_m__c}), &quot; ▸ Residential Street&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT({!Get_Student_Record.Country_m__c})), &quot; ▸ Residential Country&quot;, &quot;&quot;) &amp;
+IF(ISBLANK({!Get_Student_Record.Street_p__c}), &quot; ▸ Permanent Street&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT({!Get_Student_Record.Country_p__c})), &quot; ▸ Permanent Country&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT({!Get_Student_Record.Acknowledged_Date__c})), &quot; ▸ Acknowledged Date&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT({!Get_Student_Record.Lead_Source__c})), &quot; ▸ Lead Source&quot;, &quot;&quot;) &amp;
+IF(ISBLANK({!Get_Student_Record.Campus_SFID__c}), &quot; ▸ Campus SFID&quot;, &quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>CheckStudentMandatoryFieldsWithCondition</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXT({!Get_Student_Record.Nationality__c}) &lt;&gt; &quot;MY&quot; &amp;&amp; ISBLANK({!Get_Student_Record.Passport_Expiry_Date__c}), &quot; ▸ Passport Expiry Date&quot;, &quot;&quot;) &amp;
+IF(TEXT({!Get_Student_Record.Nationality__c}) = &quot;MY&quot; &amp;&amp; ISBLANK(TEXT({!Get_Student_Record.Race__c})), &quot; ▸ Race&quot;, &quot;&quot;) &amp;
+IF(TEXT({!Get_Student_Record.Country_m__c}) = &quot;MY&quot; &amp;&amp; ISBLANK({!Get_Student_Record.Postcode_m__c}), &quot; ▸ Residential Postcode&quot;, &quot;&quot;) &amp;
+IF(TEXT({!Get_Student_Record.Country_m__c}) = &quot;MY&quot; &amp;&amp; ISBLANK(TEXT({!Get_Student_Record.State_m__c})), &quot; ▸ Residential State&quot;, &quot;&quot;) &amp;
+IF(TEXT({!Get_Student_Record.Country_p__c}) = &quot;MY&quot; &amp;&amp; ISBLANK({!Get_Student_Record.Postcode_p__c}), &quot; ▸ Permanent Postcode&quot;, &quot;&quot;) &amp;
+IF(TEXT({!Get_Student_Record.Country_p__c}) = &quot;MY&quot; &amp;&amp; ISBLANK(TEXT({!Get_Student_Record.State_p__c})), &quot; ▸ Permanent State&quot;, &quot;&quot;)</expression>
+    </formulas>
+    <interviewLabel>SIS_ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>SIS_Check Mandatory Fields For Stud WO Payment</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Student_Record</name>
+        <label>Get Student Record</label>
+        <locationX>1073</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Student_Nationality</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Student__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Student__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>947</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Student_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Student__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Programme_Master__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Intake_Master__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Programme_Application__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Immigration_Student</fullName>
+    <columns>NAME</columns>
+    <columns>Offer_Status__c</columns>
+    <columns>Student__c</columns>
+    <columns>Programme_Master__c</columns>
+    <columns>Intake_Master__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Programme_Application__c.International_Student</value>
+    </filters>
+    <label>Immigration Student</label>
+</ListView>

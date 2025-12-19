@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_IC_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    Citizenship__c = &quot;MALAYSIAN&quot;,                           
+    NOT(ISBLANK(Passport_IC__c)),                          
+    NOT(REGEX(Passport_IC__c, &quot;^[0-9]{12}$&quot;))             
+)</errorConditionFormula>
+    <errorDisplayField>Passport_IC__c</errorDisplayField>
+    <errorMessage>The Passport/ IC must be 12 digits for Malaysians.</errorMessage>
+</ValidationRule>

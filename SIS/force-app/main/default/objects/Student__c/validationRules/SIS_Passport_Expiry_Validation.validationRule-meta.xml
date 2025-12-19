@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_Passport_Expiry_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK( Passport_Expiry_Date__c )),
+     Passport_Expiry_Date__c &lt;= TODAY()
+)</errorConditionFormula>
+    <errorDisplayField>Passport_Expiry_Date__c</errorDisplayField>
+    <errorMessage>Passport Expiry Date must be a future date.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_Parent_Lead_or_Account_is_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+AND(
+ISBLANK(Parent_Lead__c),
+ISBLANK(Parent_Account__c)
+),
+AND(
+NOT(ISBLANK(Parent_Lead__c)),
+NOT(ISBLANK(Parent_Account__c))
+)
+)</errorConditionFormula>
+    <errorMessage>Either a Parent Lead or a Parent Account is required.</errorMessage>
+</ValidationRule>
