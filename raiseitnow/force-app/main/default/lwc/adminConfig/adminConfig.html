@@ -1,0 +1,294 @@
+<template>
+    <!-- loader -->
+    <template if:true={isSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    <div class="page">
+        <!-- ─────────── HEADER (title • search • create-ticket) ─────────── -->
+        <div class="header">
+            <h1 class="title">Admin Configuration</h1>
+            <div class="header-actions">
+                <template if:false={ServiceNowDisable}>
+                    <lightning-input class="search" type="search" placeholder="Search Projects…"
+                        value={tableData.searchProj} onchange={searchProjects} is-loading={searchLoading} disabled={isAddProjectDisabled}>
+                    </lightning-input>
+                    <lightning-button class="create-btn" variant="brand" label="Add Project" icon-name="utility:add"
+                        icon-position="left" onclick={handleAddProject} disabled={isAddProjectDisabled}>
+                    </lightning-button>
+                </template>
+            </div>
+        </div>
+        <!-- ─────────── WORKSPACE (sidebar ⎯ content) ─────────── -->
+        <div class="workspace">
+            <!-- SIDE BAR -->
+            <aside class="sidebar">
+                <ul>
+                    <li class={jiraClass} data-value="Jira" onclick={onServiceSelection}>
+                        <img src={jiraLogo} alt="Jira"   /><span>Jira</span>
+                    </li>
+                    <li class={snClass} data-value="ServiceNow" onclick={onServiceSelection}>
+                        <img src={serviceNowLogo} alt="Service Now" /><span>Service&nbsp;Now</span>
+                    </li>
+                    <li class={azureClass} data-value="Azure Devops" onclick={onServiceSelection}>
+                        <img src={azureLogo} alt="Azure" /><span>Azure</span>
+                    </li>
+                </ul>
+
+            </aside>
+            <!-- DATA TABLE -->
+            <section class="content">
+                <template if:true={showTable}>
+                    <template if:true={hasAnyTemplate}>
+                        <template if:false={ServiceNowDisable}>
+                            <div class="slds-text-align_right slds-m-bottom_small">
+                                <button class="slds-button slds-button_text-destructive"
+            onclick={handleDeleteTemplatesByService}>
+        <lightning-icon icon-name="utility:delete"
+                        size="x-small"
+                        variant='error'
+                        alternative-text="Delete"
+                        class="slds-button__icon slds-button__icon_left">
+        </lightning-icon>
+        Delete All Templates
+    </button>
+                            </div>
+                        </template>
+                    </template>
+
+                    <!-- TABLE: Only when showTable is true -->
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th class="text-center">Template Available</th>
+                                <th class="text-center">Template Created Date</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={tableData} for:item="row">
+                                <tr key={row.projectName}>
+                                    <td>{row.projectName}</td>
+                                    <td class="text-center">
+                                        <lightning-input type="checkbox" variant="label-hidden"
+                                            checked={row.hadTemplate} disabled> </lightning-input>
+                                    </td>
+                                    <td class="text-center">
+                                        <template if:false={row.isDates}>
+                                            <lightning-formatted-date-time value={row.createdDate} year="numeric"
+                                                month="short" day="2-digit" hour="2-digit" minute="2-digit"
+                                                time-zone-name="short"> </lightning-formatted-date-time>
+                                        </template>
+                                        <template if:true={row.isDates}>-</template>
+                                    </td>
+                                    <td class="text-center">
+                                        <template if:false={row.hadTemplate}>
+                                            <lightning-icon icon-name="utility:add" size="x-small"
+                                                title="Create Template" style="cursor: pointer;"
+                                                data-projectname={row.projectName} data-project={row.projectKey}
+                                                data-servicename={adminConfigData.selectedService}
+                                                onclick={getFieldsList}></lightning-icon>
+                                        </template>
+                                        <template if:true={row.hadTemplate}>
+                                            <lightning-icon icon-name="utility:edit" size="x-small"
+                                                title="Edit Template" style="cursor: pointer;"
+                                                class="slds-m-right_x-small" data-recordid={row.recordId}
+                                                data-projectname={row.projectName} data-project={row.projectKey}
+                                                data-servicename={adminConfigData.selectedService}
+                                                onclick={getFieldsList}> </lightning-icon>
+                                            <lightning-icon icon-name="utility:delete" size="x-small"
+                                                title="Delete Template" style="cursor: pointer;"
+                                                data-recordid={row.recordId} onclick={handleDeleteTemplate}>
+                                            </lightning-icon>
+                                        </template>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+
+                </template>
+                <template if:false={showTable}>
+                    <template if:true={showAuthMessage}>
+                        <!-- Auth Required Message -->
+                        <div class="auth-container">
+                            <p class="auth-message">
+                                <strong>Authentication Required.</strong><br/>
+                Please authenticate to establish a secure connection with {selectedServiceName}.
+                            </p>
+                            <lightning-button label="Setup Service" variant="brand"
+                                onclick={navigateToNamedCredentials}>
+                            </lightning-button>
+                        </div>
+                    </template>
+                    <template if:false={showAuthMessage}>
+                        <!-- Default Service Tool Message -->
+                        <div class="slds-text-heading_small slds-align_absolute-center slds-p-around_large">
+                            🔔 To proceed, ensure that projects are added first.
+                        </div>
+                    </template>
+                </template>
+
+            </section>
+        </div>
+    </div>
+    <template if:true={showServicePopup}>
+        <template if:true={isSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container custom-modal-size">
+
+                <!-- Modal Header -->
+                <header class="slds-modal__header slds-text-align_center">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeServicePopup}>
+                    <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                    <h2 class="slds-text-heading_medium modal-label-bold">Selected Service: {selectedServiceName}</h2>
+                </header>
+
+                <!-- Modal Body -->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <!-- Projects Selection UI -->
+                    <div class="slds-grid slds-gutters slds-m-top_medium project-selection-grid">
+
+                        <!-- LEFT: Available Projects (Dropdown Style List) -->
+                        <div class="slds-col available-dropdown">
+                            <label class="dualbox-label">Available Projects</label>
+
+                            <!-- Search Input -->
+                            <lightning-input variant="label-hidden" type="search"
+                                placeholder="Search available projects" value={availableSearchText}
+                                onchange={handleAvailableSearch} class="search-input-enhanced">
+                            </lightning-input>
+
+                            <!-- Scrollable Dropdown-Like List -->
+                            <div class="dropdown-box">
+                                <template for:each={filteredAvailableOptions} for:item="opt">
+                                    <div key={opt.value} class="dropdown-item" onclick={handleProjectSelect}
+                                        data-id={opt.value}>
+                                        {opt.label}
+                                    </div>
+                                </template>
+                                <template if:true={isNoMatch}>
+                                    <div class="dropdown-item disabled">No projects found</div>
+                                </template>
+                            </div>
+                        </div>
+
+                        <!-- Right: Selected Projects Pills -->
+                        <div class="slds-col selected-pill-container">
+                            <label class="dualbox-label">Selected Projects</label>
+
+                            <!-- Pills -->
+                            <div class="selected-pills-wrapper">
+                                <template for:each={paginatedSelectedProjects} for:item="pill">
+                                    <span key={pill.value} class="pill">
+                {pill.label}
+                <button class="remove-btn" data-id={pill.value} onclick={removeProject}>×</button>
+            </span>
+                                </template>
+                            </div>
+                            <!-- Pagination Controls -->
+                            <div class="pagination-controls-advanced">
+                                <button class="nav-arrow-adv" onclick={prevPage} disabled={noPrev}>&laquo;</button>
+
+                                <template for:each={pageNumbers} for:item="page">
+                                    <button
+                                       key={page.id}
+                                       class={page.className}
+                                       data-page={page.id}
+                                       onclick={goToPage}>
+                                       {page.label}
+                                  </button>
+                                </template>
+
+                                <button class="nav-arrow-adv" onclick={nextPage} disabled={noNext}>&raquo;</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <footer class="slds-modal__footer footer-right-align">
+                    <lightning-button variant="neutral" label="Cancel" class="slds-m-right_small"
+                        onclick={closeServicePopup}></lightning-button>
+                    <lightning-button variant="brand" label="Submit" onclick={handleServiceSubmit}></lightning-button>
+                </footer>
+
+            </div>
+        </section>
+    </template>
+
+
+    <!--  ⚙ existing modal markup stays unchanged  -->
+    <template if:true={adminConfigData.templateModal}>
+        <div if:true={adminConfigData.templateModal} class="slds-backdrop slds-backdrop_open"></div>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={handleModalClose}>
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 if:true={adminConfigData.modalProps} id="modal-heading-01" class="slds-modal__title">
+                        {adminConfigData.modalProps.title}</h2>
+                </header>
+                <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1"
+                    style="overflow: visible;">
+                    <lightning-dual-listbox class="fieldListBox" name="fieldSelection" source-label="Available"
+                        selected-label="Selected" required-options={adminConfigData.requiredFields}
+                        options={adminConfigData.availableFields} value={adminConfigData.selectedFields}
+                        sorted-by="label" show-activity-indicator={adminConfigData.fieldsRetrieveing}
+                        onchange={onFieldSelect}>
+                    </lightning-dual-listbox>
+                    <div if:true={adminConfigData.showAssignee} class="slds-size_1-of-2 slds-p-around_small">
+                        <c-custom-lookup if:true={adminConfigData.userLookupList}
+                            selected-value={adminConfigData.selectedUserName} is-required
+                            onrecordselection={handleLookupChange} placeholder="Search User" name="User"
+                            icon-name="standard:user" static-data={adminConfigData.userLookupList}
+                            lookup-label="Assignee" need-to-search-data-base="false">
+                        </c-custom-lookup>
+                    </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <template if:false={ServiceNowDisable}>
+                        <button class="slds-button slds-button_neutral" onclick={handleAssignToAll}>Update to All</button>
+                    </template>
+                    <button class="slds-button slds-button_neutral" onclick={handleModalClose}>Cancel</button>
+                    <button data-recordid={adminConfigData.recordId} class="slds-button slds-button_brand"
+                        onclick={handleTemplateSave}>Save</button>
+                </footer>
+            </div>
+        </section>
+    </template>
+
+
+    <!-- template creation and deletion toast -->
+    <template if:true={showTemplateMessage}>
+        <div class="template-toast">
+            <template if:true={isCreateSuccess}>
+                <div class="toast-content success">
+                    <div class="lottie-container create" lwc:dom="manual"></div>
+                    <span> Service Template Created Successfully</span>
+                </div>
+            </template>
+            <template if:true={isDeleteSuccess}>
+                <div class="toast-content error">
+                    <div class="lottie-container delete" lwc:dom="manual"></div>
+                    <span> Service Template Deleted Successfully</span>
+                </div>
+            </template>
+        </div>
+    </template>
+
+
+
+</template>

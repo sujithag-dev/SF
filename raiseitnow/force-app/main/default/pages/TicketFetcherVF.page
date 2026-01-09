@@ -1,0 +1,10 @@
+<apex:page standardStylesheets="false" showHeader="false" sidebar="false">
+    <div id="lwc-container"></div>
+
+    <script src="/lightning/lightning.out.js"></script>
+    <script>
+        $Lightning.use("c:ticketFetcherApp", function () {
+            $Lightning.createComponent("c:ticketFetcher", {}, "lwc-container");
+        });
+    </script>
+</apex:page>

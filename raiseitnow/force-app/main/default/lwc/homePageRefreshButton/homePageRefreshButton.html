@@ -1,0 +1,10 @@
+<template>
+    <template if:true={configMessage}>
+        <div class ='outer-div'>
+        <div class="config-error-card">
+            <h2 class="config-error-title">Configuration Required</h2>
+            <p class="config-error-message">{configMessage}</p>
+        </div>
+        </div>
+    </template>
+</template>

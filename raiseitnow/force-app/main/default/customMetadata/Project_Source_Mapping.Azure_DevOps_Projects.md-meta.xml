@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Azure_DevOps_Projects</label>
+    <protected>false</protected>
+    <values>
+        <field>Project_Names__c</field>
+        <value xsi:type="xsd:string">d4476de2-5a75-48f5-ba73-c2a12f373c33,799f44b0-491e-4ef7-b301-24aa6efed0fd,8c508bde-d68d-467e-ae7d-6d580e3f39b7,9274bd8d-c468-4b51-ab93-84e64a559ca8,6731d690-ee17-4169-bf29-4aad5011b45f,8defda46-a07b-4d30-96ab-5aff9b040266,408c0b58-50eb-4c63-9ec2-48904db90845,0acab057-e757-469f-8181-d78f0527d37a</value>
+    </values>
+    <values>
+        <field>Source_System__c</field>
+        <value xsi:type="xsd:string">Azure Devops</value>
+    </values>
+</CustomMetadata>

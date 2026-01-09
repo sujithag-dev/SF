@@ -1,0 +1,201 @@
+/* .overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.image-container:hover .overlay {
+    visibility: visible;
+}
+
+.preview-icon, .remove-icon {
+    color: white;
+}
+:host {
+
+       --slds-c-modal-footer-spacing-block-start:0.3rem;
+
+       --slds-c-modal-footer-spacing-block-end:0.3rem;
+
+}
+.modal-scroll-content {
+   height: auto;
+   min-height: 20rem;
+   overflow-y: auto;
+   max-height: 25rem;
+}
+
+.modal-no-scroll {
+    max-height: none;
+    overflow: visible;
+} */
+
+
+/* .slds-file__crop img {
+    position: relative;
+    top:0;
+    margin-top:25%;
+   
+}
+.slds-file__crop {
+    display: initial;
+    position: relative;
+    padding-block-start: 1%;
+    overflow: hidden;
+    border-radius: var(--slds-g-radius-border-2);
+    top: 0px;
+} */
+
+
+/* .capturebutton lightning-button,
+.recordbutton lightning-button {
+    min-width: 120px; 
+    width: 100%;
+} */
+
+/* ------------------------------------------------------------------------new one ------------------- */
+
+:host {
+    --slds-c-modal-footer-spacing-block-start: 0.3rem;
+    --slds-c-modal-footer-spacing-block-end: 0.3rem;
+}
+
+/* Modal scrolling */
+.modal-scroll-content {
+    height: auto;
+    min-height: 20rem;
+    overflow-y: auto;
+    max-height: 10rem;
+}
+
+.modal-no-scroll {
+    max-height: none;
+    overflow: visible;
+}
+
+/* Button styles */
+.capturebutton lightning-button,
+.recordbutton lightning-button {
+    min-width: 120px;
+    width: 100%;
+}
+
+/* Grid container for thumbnails */
+.thumbnail-container {
+    padding: 0.25rem;
+}
+
+/* File card */
+.thumbnail-card {
+    position: relative;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container for image + filename */
+.thumbnail-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Clickable preview area */
+.preview-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 6px 6px 0 0;
+    z-index: 1;
+}
+
+/* Media inside preview */
+.preview-wrapper img,
+.preview-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Overlay only over preview */
+.preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Activate overlay on hover */
+.preview-wrapper:hover .preview-overlay {
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* Eye icon */
+.preview-icon {
+    --slds-c-icon-color-foreground-default: #fff;
+    --slds-c-icon-color-background: transparent;
+    z-index: 3;
+}
+
+/* Close (X) icon */
+.remove-icon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 4;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Filename below preview */
+.filename-section {
+    background: #fff;
+    padding: 4px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-radius: 0 0 6px 6px;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    max-height: 2.5rem;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Truncated filename */
+.slds-file__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+/* Legacy (not used anymore) */
+.overlay {
+    display: none;
+}
+.image-container:hover .overlay {
+    display: none;
+}
+.footer-fixed {
+    bottom: 0;
+    background: white;
+}
+.slds-docked-composer.slds-is-open {
+    height: 435px;
+}

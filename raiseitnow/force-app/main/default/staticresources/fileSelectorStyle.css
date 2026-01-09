@@ -1,0 +1,19 @@
+.file-selector-large ,
+.file-selector-large .slds-file-selector__dropzone,
+.file-selector-large .slds-file-selector__dropzone slot {
+    display: block;
+    width: 100% !important;
+    border-radius: 20px;
+}
+
+.file-selector-large .slds-file-selector__dropzone slot {
+  padding: 14px;
+}
+
+.file-selector-large .slds-file-selector__dropzone slot .slds-file-selector__body {
+    flex-direction: column;
+}
+
+.slds-file-selector {
+   display: block;
+}

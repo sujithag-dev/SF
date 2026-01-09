@@ -1,0 +1,150 @@
+/* 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  min-width: 360px;
+  max-width: 500px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: center;
+  animation: popIn 0.3s ease-out;
+}
+
+.message-box {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.message-box .message {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.message-box.success .message {
+  color: #1e824c;
+}
+
+.message-box.error .message {
+  color: #c0392b;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.lottie-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.fallback {
+    font-size: 3rem;
+    line-height: 100px;
+    text-align: center;
+} */
+
+
+
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 0.75rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 3rem 2.5rem;
+  min-height: 300px; /* Optional: to accommodate larger animation */
+  min-width: 420px;
+  max-width: 600px;
+  /* padding: 2.5rem; */
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: center;
+  animation: popIn 0.3s ease-out;
+}
+
+.message-box {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-box .message {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.message-box.success .message {
+  color: #1e824c;
+}
+
+.message-box.error .message {
+  color: #c0392b;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 🔄 Enlarged Lottie container */
+.lottie-container {
+  width: 220px;   /* Increased from 180px */
+  height: 220px;  /* Increased from 180px */
+  margin: 0 auto;
+}
+
+.fallback {
+  font-size: 3rem;
+  line-height: 100px;
+  text-align: center;
+}

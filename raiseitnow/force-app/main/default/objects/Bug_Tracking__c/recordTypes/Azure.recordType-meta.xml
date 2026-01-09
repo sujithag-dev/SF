@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Azure</fullName>
+    <active>true</active>
+    <label>Azure</label>
+    <picklistValues>
+        <picklist>Bug_Type__c</picklist>
+        <values>
+            <fullName>Azure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jira</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Now</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

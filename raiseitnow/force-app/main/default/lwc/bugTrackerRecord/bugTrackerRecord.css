@@ -1,0 +1,19 @@
+.custom-highlights-card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: var(--lwc-shadowDropDown);
+}
+.spinner {
+  position: relative;
+  display: block;
+  
+}
+.btn {
+    position: absolute;
+    top: 17px;
+    right: 10px;
+}
+.slds-modal__container {
+    max-width: 50rem;
+    width: 60%;
+}

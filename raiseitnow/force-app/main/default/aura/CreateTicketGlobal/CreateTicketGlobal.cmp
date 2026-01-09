@@ -1,0 +1,3 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" >
+    <c:ticketCreator recordId="{!v.recordId}" onvaluechange="{!c.cancel}" ></c:ticketCreator>
+</aura:component>

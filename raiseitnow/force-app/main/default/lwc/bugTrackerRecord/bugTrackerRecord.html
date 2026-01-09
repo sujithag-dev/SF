@@ -1,0 +1,68 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-size_12-of-12">
+            
+            <template if:true={isLoading}>
+                <div class="spinner">
+                    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                </div>
+            </template>
+            <div if:false={isLoading} class="slds-card" style=" max-height:calc(150vh - 180px);overflow:auto;">
+                <div class="slds-grid slds-wrap slds-p-around_small slds-border_bottom" style="align-items: center;">
+                <p class="slds-p-around_small" style="font-weight: bold; font-size: 1rem;">{bugType}
+                    Bug Details</p>
+             <lightning-button label="Filter"  icon-name="utility:filterList" class="btn" onclick={handleFilterClick}></lightning-button>
+            </div>
+
+                <!--slds-border_bottom-->
+                 <div class="slds-grid slds-wrap">
+                    <template for:each={filteredTicketList} for:item="item">
+                        <div key={item.label} class="slds-col slds-size_6-of-12 slds-p-vertical_small"
+                            style="padding: 4px 0;">
+                            <div style="border-bottom: 1px solid #d8dde6; width: 95%; margin-left: 1rem;">
+                                <p class="slds-p-left_medium" style="color: #444444;">{item.label}</p>
+                                <p class="slds-p-left_medium">
+                                    <lightning-formatted-rich-text value={item.value}></lightning-formatted-rich-text>
+                                </p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <template if:true={isFilterModalOpen}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+
+            <!-- Header -->
+            <header class="slds-modal__header">
+                <h2 class="slds-text-heading_medium">Field Selection</h2>
+            </header>
+
+            <!-- Body -->
+            <div class="slds-modal__content slds-p-around_medium">
+                <lightning-dual-listbox
+                    name="responseFields"
+                    label="Select Fields to Display"
+                    source-label="Available Fields"
+                    selected-label="Displayed Fields"
+                    options={availableFields}
+                    value={selectedFields}
+                    onchange={handleFieldChange}>
+                </lightning-dual-listbox>
+            </div>
+
+            <!-- Footer -->
+            <footer class="slds-modal__footer footer-right-align">
+                <lightning-button variant="neutral" label="Cancel" class="slds-m-right_small" onclick={closeFilterModal}></lightning-button>
+                <lightning-button variant="brand" label="Apply" onclick={submitFilter}></lightning-button>
+            </footer>
+
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+    </div>
+
+</template>

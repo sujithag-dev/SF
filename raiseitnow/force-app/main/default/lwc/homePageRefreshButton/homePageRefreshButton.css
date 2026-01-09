@@ -1,0 +1,95 @@
+.lightning-studio{
+	color : blue;
+}
+.container {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the end of the flex container */
+}
+.hidden-flow {
+    display: none;
+}
+.container {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.status-message {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+.success-text {
+    color: green;
+}
+.config-card {
+    background: #f9fbff;
+    border-radius: 8px;
+    padding: 20px 30px;
+    text-align: center;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;     
+    border-top: 3px solid #1b75ff;
+    max-width: 500px;        
+    width: 100%;  
+               
+}
+
+.config-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1b75ff;
+    margin-bottom: 10px;
+}
+
+.config-text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+.config-error-card {
+    background: #f9fbff;
+    border-radius: 8px;
+    padding: 20px 30px;
+    text-align: center;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;     
+    border-top: 3px solid #1b75ff;
+    max-width: 500px;        
+    width: 100%;
+    margin-top: 10%;
+}
+
+.config-error-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0a74da; /* Blue header */
+    margin-bottom: 0.5rem;
+}
+
+.config-error-message {
+    font-size: 1rem;
+    color: #2c3e50;
+    line-height: 1.4;
+}

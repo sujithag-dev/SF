@@ -1,0 +1,29 @@
+<template>
+    <div class="backdrop">
+        <div class="modal">
+            <!-- Loading State -->
+            <template if:true={isLoading}>
+                <div class="message-box">
+                    <div class="lottie-container loading" lwc:dom="manual"></div>
+                    <p class="message">Fetching tickets... Please wait</p>
+                </div>
+            </template>
+
+            <!-- Success State -->
+            <template if:true={isSuccess}>
+                <div class="message-box success">
+                    <div class="lottie-container success" lwc:dom="manual"></div>
+                    <p class="message">Tickets fetched successfully!</p>
+                </div>
+            </template>
+
+            <!-- Error State -->
+            <template if:true={isError}>
+                <div class="message-box error">
+                    <div class="lottie-container error" lwc:dom="manual"></div>
+                    <p class="message">Failed to fetch tickets. Please try again.</p>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

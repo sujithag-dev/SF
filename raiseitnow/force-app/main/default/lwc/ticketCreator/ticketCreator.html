@@ -1,0 +1,178 @@
+<template >
+    <template if:true={isSpinner}>
+        <lightning-spinner size="medium" class="slds-m-bottom_medium"></lightning-spinner>
+    </template>
+    <div class={scrollContainerClass}>
+               <!--style="height: auto;min-height: 20rem; overflow-y: auto;max-height: 25rem;"  style="max-height:400px; overflow-y: auto; max-width: 100%; box-sizing: border-box;"  -->
+         <!-- <div class="slds-header slds-border_bottom slds-p-bottom_small" style="text-align: center;">
+            <p class="slds-text-heading_label"><b>Create Ticket</b></p>
+        </div> -->
+
+        <!-- select srvice : get based on named credentials--> 
+        <!-- <div class="slds-grid slds-var-m-left_medium slds-var-m-top_medium">
+            <lightning-combobox if:true={showServiceTypesOptions} class="slds-size_1-of-2 slds-p-right_small" name="project" data-name="templateSelect" label="Select Service" value={selectedServiceType}
+                placeholder="Select Your Service" options={availableServiceTypes} onchange={onServiceTypeSelection} ></lightning-combobox>
+        </div> -->
+        
+        <!--azure  how to get projectes related to azure-->
+
+
+
+        <div class="slds-grid slds-wrap slds-p-around_small">
+          <template if:true={showServiceCombo}> 
+            <div class="slds-grid slds-wrap slds-size_1-of-1"> 
+                    <div class="slds-size_1-of-2 slds-p-right_small">
+                       <lightning-combobox  name="service"   label="Select Service"  value={selectedService}  placeholder="Choose a Service" options={serviceOptions} onchange={handleServiceChange}> </lightning-combobox>
+                    </div>
+                    <div class="slds-size_1-of-2">
+                        <lightning-combobox   name="project" data-name="templateSelect" label="Select Project" value={ticketCreatorData.selectedProjectfullname}
+                        laceholder="Select Your Project" options={ticketCreatorData.projDetails} onchange={onProjectSelection} ></lightning-combobox>
+                    </div>
+            </div> 
+           </template>
+           <template if:false={showServiceCombo}>
+                <div class="slds-size_1-of-1 slds-p-bottom_small">
+                  <span  style="font-weight: 400; color:rgb(6, 82, 212); font-style: italic;">There is no configuration for any project. Please contact Administrator.</span>
+                </div>
+            </template>   
+
+
+        </div>
+
+         <template if:true={showFieldsSection}>
+        <div  class="slds-grid slds-wrap slds-p-around_small">
+            <div class="slds-grid slds-wrap slds-size_1-of-1 slds-p-bottom_small">
+                <template for:each={ticketCreatorData.fieldsList} for:item="field" for:index="index">
+                    <div class="slds-size_1-of-2" key={field.name}>
+                        <div class="slds-p-around_xx-small">
+                            <lightning-input max-length={maxLength} data-index={index} data-projectkey={field.projectKey} data-projectname={field.projectName} data-servicename={field.serviceName} if:true={field.isText} name={field.name} label={field.label} required={field.required} value={field.value} disabled={field.view} type="text" onchange={onInput}></lightning-input>
+                            <lightning-combobox data-index={index} data-projectkey={field.projectKey} data-projectname={field.projectName} data-servicename={field.serviceName} if:true={field.isPickList} name={field.name} label={field.label} required={field.required} value={field.value}  options={field.options} disabled={field.isView} onchange={onInput}></lightning-combobox>
+                        </div>
+                    </div>
+                </template>
+                <div if:true={ticketCreatorData.userLookupList} class="slds-size_1-of-2 slds-p-around_xx-small">
+                        <c-custom-lookup if:true={ticketCreatorData.userLookupList}
+                            selected-value={ticketCreatorData.selectedUserName} is-required={assigneeRequired}
+                            onrecordselection={handleLookupChange} placeholder="Search User" name="User"
+                            icon-name="standard:user" static-data={ticketCreatorData.userLookupList}
+                            lookup-label="Assignee" need-to-search-data-base="false">
+                        </c-custom-lookup>
+                </div>
+               <div if:true={ticketCreatorData.filteredconfiguationItemList} class="slds-size_1-of-2 slds-p-around_xx-small">
+                 <c-custom-lookup if:true={ticketCreatorData.configItem} selected-value={ticketCreatorData.selectedConfigItem}
+                    onrecordselection={handleLookupChange}
+                    is-required={ticketCreatorData.configItem.required}
+                    placeholder="Search Configuration Item" name="configurationItem"
+                    icon-name="standard:user"
+                    static-data={ticketCreatorData.filteredconfiguationItemList}
+                    lookup-label="Configuration Item"
+                    need-to-search-data-base="false">
+                 </c-custom-lookup>
+                </div>
+                <div class="slds-size_1-of-1">
+                    <div class="slds-p-around_xx-small">
+                        <lightning-textarea if:true={showDescriptionVisiblity} value={ticketCreatorData.description.value} data-projectkey={ticketCreatorData.selectedProjectKey} data-projectname={ticketCreatorData.description.projectName} data-servicename={ticketCreatorData.description.serviceName} name="description" label="Description" required={ticketCreatorData.description.required} onchange={onInput}></lightning-textarea>
+                    </div>
+                </div>
+
+                <div class="slds-size_1-of-1">
+                    <div class="slds-var-p-horizontal_xx-small" >
+                        <p style="color: rgb(80, 73, 73);font-size: 0.75rem;position: relative;top: 18px;">
+                            Attachment <lightning-helptext style="bottom: 3px;position: relative;"
+                                content="Each file size should not exceed 3MB, Total files size cannot be more than 12MB"></lightning-helptext>
+                        </p>
+                        
+                        <lightning-file-upload class="file-selector-large" variant="label-hidden" data-projectkey={ticketCreatorData.selectedProjectKey} data-projectname={ticketCreatorData.attachment.projectName} data-servicename={ticketCreatorData.attachment.serviceName} accept={acceptedFormats} required={ticketCreatorData.attachment.required}
+                        record-id={ticketCreatorData.selectedTemplateId} onuploadfinished={handleUploadFinished} multiple>
+                        </lightning-file-upload>
+                    </div>
+                </div>
+
+                <!-- Button Row: No wrap, responsive -->
+               <div class="slds-grid slds-no-wrap slds-gutters_small slds-var-m-top_small slds-align_absolute-center">
+
+                       <div class="slds-col slds-grow">
+                            <lightning-button
+                                  class="slds-button_stretch capturebutton"
+                                  data-name="captureimage"
+                                  value=false
+                                  variant="neutral"
+                                  icon-name="utility:preview"
+                                  icon-position="left"
+                                  label="Capture Screen"
+                                  title="Take a screenshot"
+                                  onclick={extnScreencapture}>
+                             </lightning-button>
+                        </div>
+
+                       <div class="slds-col slds-grow">
+                             <lightning-button
+                                   class="slds-button_stretch recordbutton"
+                                   data-name="recordimage"
+                                   value=false
+                                   variant="neutral"
+                                   icon-name="utility:screen"
+                                   icon-position="left"
+                                   label="Record Tab"
+                                   title="Start/stop recording"
+                                   onclick={recordExtnScreencapture}>
+                              </lightning-button>   
+                         </div>
+
+                  </div>
+
+                <div if:true={ticketCreatorData.uploadedFiles} class="slds-size_1-of-1 slds-grid slds-wrap slds-p-top_small slds-m-left_xx-small slds-gutters">
+                    <template if:true={ticketCreatorData.uploadedFiles}>
+                        <div class="slds-grid slds-wrap slds-gutters slds-p-top_small slds-m-left_xx-small slds-size_1-of-1">
+                            <template for:each={ticketCreatorData.uploadedFiles} for:item="file">
+                                     <div key={file.contentVersionId} class="slds-size_1-of-4 slds-col thumbnail-container">
+                                           <div class="slds-file slds-file_card slds-has-title thumbnail-card">
+                                                    <!-- Preview with built-in SLDS hover effect -->
+                                                 <figure class="slds-file__crop-container thumbnail-figure">
+                                                        <a class="slds-file__crop preview-wrapper" data-id={file.documentId} onclick={previewFileFromThumbNail}>
+                                                                    <template if:true={file.isVideo}>
+                                                                          <video src={file.url} muted></video>
+                                                                    </template>
+                                                                    <template if:false={file.isVideo}>
+                                                                          <img src={file.url} alt={file.name} />
+                                                                    </template>
+                                                        </a>
+                                                           <!-- File Name Section -->
+                                                       <figcaption class="slds-file__title_card filename-section">
+                                                          <div class="slds-media slds-media_small slds-media_center">
+                                                               <lightning-icon icon-name={file.iconName} size="xx-small" title={file.name}></lightning-icon>
+                                                                      <div class="slds-media__body slds-var-p-left_xx-small">
+                                                                              <span class="slds-file__text slds-truncate" title={file.name}>
+                                                                                         {file.name}
+                                                                              </span>
+                                                                       </div>
+                                                           </div>
+                                                       </figcaption>
+                                                 </figure>
+                                                   <!-- Close Button -->
+                                                <lightning-button-icon
+                                                     variant="bare"
+                                                    icon-name="utility:close"
+                                                    size="small"
+                                                    title="Remove"
+                                                    alternative-text="Remove"
+                                                    data-contentdocumentid={file.documentId}
+                                                    class="remove-icon"
+                                                    onclick={handleRemoveAttachment}>
+                                               </lightning-button-icon>
+                                           </div>
+                                       </div>
+                              </template>
+                         </div>
+                     </template>
+              </div>
+                    
+            </div>
+       
+        </div>
+         </template>
+    </div>
+         <div class="slds-grid slds-wrap slds-border_top slds-size_1-of-1 slds-p-around_medium slds-align_absolute-center footer-fixed">
+                <lightning-button variant="brand" label="Create Ticket" onclick={createTicket}></lightning-button>
+            </div>
+</template>

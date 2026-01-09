@@ -1,0 +1,161 @@
+<template>
+    <div class="slds-grid slds-wrap" role="listitem">
+        <div class="slds-size_1-of-1 slds-form-element">
+            <div>
+                <label class="slds-form-element__label" for="combobox-id-2">
+                    <template if:true={isRequired}>
+                        <abbr class="slds-required" title="required">*</abbr>
+                    </template>
+                    {lookupLabel}</label>
+                    <div class="slds-form-element__control"
+                    style="border: 1px solid grey; border-radius: 5px; display: flex; align-items: center;">
+                    <div class="slds-combobox_container slds-p-left_xx-small slds-p-vertical_xx-small"
+                        style="width: 100%;">
+                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                            aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                            <!-- Selected View -->
+                            <template if:true={selectedValue}>
+                                <div data-key="pilldiv"
+                                    class="slds-grid slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right"
+                                    style="align-items: center;" role="none">
+                                    <template if:true={iconName}>
+                                        <span style="display: contents;"
+                                            class="slds-col slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon"
+                                            title="object">
+                                            <div class="slds-icon slds-icon_small" aria-hidden="true">
+                                                <lightning-icon icon-name={iconName} size="small"></lightning-icon>
+                                            </div>
+                                            <span class="slds-assistive-text">Record</span>
+                                        </span>
+                                    </template>
+                                    <div class="slds-col slds-grid">
+                                        <div class="slds-col slds-p-left_x-small">
+                                            <input if:false={isOverride} class="slds-truncate"
+                                                style="background: none; border: none; outline: none; padding-left: 0%; width: 100%;"
+                                                type="text" id="combobox-id-5" aria-controls="listbox-id-5"
+                                                role="textbox" placeholder="Select an Option" readonly
+                                                value={selectedValue} title={selectedValue} />
+                                            <input if:true={isOverride} class="slds-truncate"
+                                                style="background: none; border: none; outline: none; padding-left: 0%; width: 100%; color: green;"
+                                                type="text" id="combobox-id-6" aria-controls="listbox-id-5"
+                                                role="textbox" placeholder="Select an Option" readonly
+                                                value={selectedValue} title={selectedValue} />
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-10 slds-grid slds-m-right_small"
+                                            style="align-items: center; flex-direction: row-reverse;">
+                                            <button class="slds-button slds-button_icon" disabled={disabled}
+                                                onclick={removeRecordOnLookup} title="Remove selected option">
+                                                <span class="slds-button__icon" aria-hidden="true">
+                                                    <lightning-icon icon-name="utility:close" size="xx-Small"
+                                                        class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+                                                        aria-hidden="true"></lightning-icon>
+                                                </span>
+                                                <span class="slds-assistive-text">Remove selected record</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Not Selected View -->
+                            <template if:false={selectedValue}>
+                                <div data-style="someElementID">
+                                    <div data-key="searchdiv"
+                                        class="slds-grid slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                        role="none">
+                                        <div class="slds-form-element slds-form-element_edit slds-hint-parent"
+                                            style="width: 100%;">
+                                            <div class="slds-grid slds-form-element__control">
+                                                <div class="slds-col slds-size_9-of-10 slds-form-element__static">
+                                                    <input class="slds-truncate" autocomplete="off" disabled={disabled}
+                                                        type="text" value={searchKey} onkeyup={handleKeyChange}
+                                                        onclick={handleKeyChange} onchange={handleKeyChange}
+                                                        id="combobox-id-2" aria-autocomplete="list"
+                                                        aria-controls="listbox-id-2" role="textbox"
+                                                        placeholder="Search..."
+                                                        style="background: none; border: none; outline: none; padding-left: 0%; width:100%">
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-10 slds-grid slds-m-right_small"
+                                                    style="align-items: center; flex-direction: row-reverse;">
+                                                    <button class="slds-float_right slds-button slds-button_icon">
+                                                        <lightning-icon class="iconblack" icon-name="utility:search"
+                                                            size="x-small" alternative-text="Preview"
+                                                            title="Preview"></lightning-icon>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <template if:true={showRecordsList}>
+                                        <div id="listbox-id-2-venu" data-key="dropdownresult"
+                                            class="slds-show slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+                                            style="max-height:180px;" role="listbox">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <template if:true={message}>
+                                                    <center> {message}</center>
+                                                </template>
+                                                <template for:each={recordsList} for:item="record">
+                                                    <li id={record.Id} key={record.Id} data-key={record.Id}
+                                                        data-name={record.Name} onclick={onRecordSelection}
+                                                        role="presentation" class="slds-listbox__item">
+                                                        <div data-key={record.Id} data-name={record.Name}
+                                                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                            role="option">
+                                                            <span
+                                                                class="slds-p-right_medium slds-listbox__option-icon slds-p-vertical--xxx-small">
+                                                                <lightning-icon icon-name={iconName}
+                                                                    size="x-small"></lightning-icon>
+                                                            </span>
+                                                            <span style="padding-bottom:0%" class="slds-media__body">
+                                                                <template if:false={showFullName}>
+                                                                    <span data-key={record.Id} data-name={record.Name}
+                                                                        class="slds-listbox__option-text slds-listbox__option-text_entity"
+                                                                        title={record.Name}>{record.Name} </span>
+                                                                    <span if:true={showAdditionalInfo}
+                                                                        data-key={record.Id} data-name={record.Name}
+                                                                        class="slds-listbox__option-text slds-listbox__option-text_entity"
+                                                                        title={record.additionalInfo}>{record.additionalInfo}
+                                                                    </span>
+                                                                </template>
+                                                                <template if:true={showFullName}>
+                                                                    <span data-key={record.Id} data-name={record.Name}
+                                                                        class="slds-listbox__option-text slds-listbox__option-text_entity"
+                                                                        title={record.FullName}>{record.FullName}
+                                                                    </span>
+                                                                    <span if:true={showAdditionalInfo}
+                                                                        data-key={record.Id} data-name={record.Name}
+                                                                        class="slds-listbox__option-text slds-listbox__option-text_entity"
+                                                                        title={record.additionalInfo}>{record.additionalInfo}
+                                                                    </span>
+                                                                </template>
+                                                                <template if:true={showAdditionalFields}
+                                                                    for:each={record.displayAddionalFields}
+                                                                    for:item="field">
+                                                                    <span title={field.value} data-key={record.Id}
+                                                                        data-name={record.Name}
+                                                                        style="width: 100%; white-space: break-spaces;"
+                                                                        key={field.label}
+                                                                        class="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                                                                        <b>{field.label}</b>&nbsp;:&nbsp;<span
+                                                                            if:true={field.value}>{field.value}</span><span
+                                                                            if:false={field.value}>&nbsp; -
+                                                                            &nbsp;</span>
+                                                                    </span>
+                                                                </template>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
