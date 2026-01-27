@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Default values for Parts Coverage, Labor Coverage, Expense Coverage, Service Unit, and Service Duration fields on Service Term records</description>
+    <label>Service Term Default</label>
+    <pluralLabel>Service Term Defaults</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

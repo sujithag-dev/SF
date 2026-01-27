@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invoice_Fields_ReadOnly_Except_Draft</fullName>
+    <active>true</active>
+    <description>This validation rule restricts users from modifying Invoice Date, Due Date, Amount, and Total Amount once the Status changes from Draft.</description>
+    <errorConditionFormula>AND (
+  ISPICKVAL (mfg_Status__c, &quot;Draft&quot;) = FALSE,
+  OR (
+    ISCHANGED (mfg_Invoice_Date__c),
+    ISCHANGED (mfg_Due_Date__c),
+    ISCHANGED (mfg_Amount__c),
+    ISCHANGED (mfg_Total_Amount__c)
+  )
+)</errorConditionFormula>
+    <errorMessage>These fields (Invoice Date, Due Date, Amount, and Total Amount) cannot be edited.</errorMessage>
+</ValidationRule>

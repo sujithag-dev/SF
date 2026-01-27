@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Number_of_Distinct_Products__c</fullName>
+    <label>Number of Distinct Products</label>
+    <summaryForeignKey>mfg_Transport_Product__c.mfg_Transport_And_Schedule__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

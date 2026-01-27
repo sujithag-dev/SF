@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Rule_Code__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    ISBLANK(mfg_Service_Term__r.mfg_Service_Scope_Value__c),
+    &quot;GEN&quot;,
+    UPPER(
+        LEFT(
+            SUBSTITUTE(
+                mfg_Service_Term__r.mfg_Service_Scope_Value__c,
+                &quot; &quot;,
+                &quot;&quot;
+            ),
+            3
+        )
+    )
+)
+&amp;
+&quot; - &quot;
+&amp;
+Name</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Rule Code</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

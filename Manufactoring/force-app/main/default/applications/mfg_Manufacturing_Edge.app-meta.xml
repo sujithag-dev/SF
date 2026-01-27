@@ -159,7 +159,6 @@
     <tabs>standard-ApprovalWorkItem</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
-    <tabs>mfg_Production_Batch_Unit__c</tabs>
     <tabs>mfg_Service_Term__c</tabs>
     <tabs>mfg_Product_Service_Term__c</tabs>
     <tabs>mfg_Service_Term_RuleSet__c</tabs>
@@ -167,5 +166,5 @@
     <tabs>mfg_Technician_Code__c</tabs>
     <tabs>mfg_Defect_Technician_Assignment__c</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>Manufacturing_Edge_UtilityBar</utilityBar>
+    
 </CustomApplication>

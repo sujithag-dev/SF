@@ -1,0 +1,92 @@
+<template>
+    <div class="slds-card slds-m-around_small">
+      <!-- Search Box -->
+      <div class="slds-grid slds-gutters slds-wrap slds-m-around_medium">
+        <div class="slds-col slds-size_3-of-12">
+          <lightning-record-picker label="Accounts" placeholder="Search Accounts..." object-api-name="Account">
+          </lightning-record-picker>
+        </div>
+        <div  class="slds-col slds-size_3-of-12">
+         <lightning-record-picker label="Contacts" placeholder="Search Contacts..." object-api-name="Contact">
+          </lightning-record-picker>
+        </div>
+        <div  class="slds-col slds-size_3-of-12">
+          <lightning-record-picker label="Products" placeholder="Search Products..." object-api-name="Product2">
+          </lightning-record-picker>
+        </div>
+        <div  class="slds-col slds-size_3-of-12">
+           <lightning-input
+            name="enter a Asset Number"
+            label="Asset Number"
+            type="search"
+        ></lightning-input>
+        </div>
+        <div  class="slds-col slds-size_3-of-12">
+           <lightning-record-picker label="Billing Address" placeholder="Search Billing Address..." object-api-name="mfg_Warehouse__c">
+          </lightning-record-picker>
+        </div>
+        <div  class="slds-col slds-size_3-of-12"> <!--date Field-->
+          <div class="slds-grid slds-gutters">
+           <div class="slds-col slds-size_1-of-2">
+           <lightning-input type="date" name="input1" label="From" placeholder="Enter a From Date"></lightning-input>
+           </div>
+           <div class="slds-col slds-size_1-of-2">
+           <lightning-input type="date" name="input1" label="To" placeholder="Enter a To Date"></lightning-input>
+           </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div>
+        <div class="slds-grid slds-grid_align-end slds-m-around_medium">
+         <div>
+            <lightning-button variant="brand" label="Search" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+         </div>
+         <div>
+           <lightning-button variant="brand" label="Clear" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+         </div>
+         <div>
+           <lightning-button variant="brand" label="Create" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+         </div>
+         </div>
+      </div>
+
+      <!-- Page Navigation -->
+      <div class="slds-grid slds-gutters slds-m-around_medium">
+        <div class="slds-col slds-size_3-of-12">
+          <lightning-icon icon-name='utility:chevronleft' alternative-text='chevronleft' size='xx-small' title='chevronleft'></lightning-icon>
+        </div>
+        <div class="slds-col slds-size_2-of-12">
+          <lightning-combobox
+            name="progress"
+            label="Records Per Page"
+            value={value}
+            placeholder="Select Progress"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+        </div>
+        <div class="slds-col slds-size_2-of-12">
+          <p>Page of Pages</p>
+        </div>
+        <div class="slds-col slds-size_2-of-12">
+          <p>0 of 10</p>
+        </div>
+        <div class="slds-col slds-size_3-of-12">
+          <lightning-icon icon-name='utility:chevronright' alternative-text='chevronright' size='xx-small' title='chevronright'></lightning-icon>
+        </div>
+      </div>
+
+      <div class="slds-m-around_medium"><!-- Data Table -->
+        <lightning-datatable
+                key-field="id"
+                data={data}
+                show-row-number-column
+                row-number-offset={rowOffset}
+                suppress-bottom-bar
+                draft-values={draftValues}
+                columns={columns}>
+        </lightning-datatable>
+      </div>
+    </div>
+</template>

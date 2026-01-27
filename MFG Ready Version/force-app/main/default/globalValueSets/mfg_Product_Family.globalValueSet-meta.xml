@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Generic</fullName>
+        <default>true</default>
+        <label>Generic</label>
+    </customValue>
+    <customValue>
+        <fullName>Commercial Vehicles</fullName>
+        <default>false</default>
+        <label>Commercial Vehicles</label>
+    </customValue>
+    <customValue>
+        <fullName>Compact Sedans</fullName>
+        <default>false</default>
+        <label>Compact Sedans</label>
+    </customValue>
+    <customValue>
+        <fullName>Electric Vehicles</fullName>
+        <default>false</default>
+        <label>Electric Vehicles</label>
+    </customValue>
+    <customValue>
+        <fullName>Hatchbacks</fullName>
+        <default>false</default>
+        <label>Hatchbacks</label>
+    </customValue>
+    <customValue>
+        <fullName>SUVs And Crossovers</fullName>
+        <default>false</default>
+        <label>SUVs And Crossovers</label>
+    </customValue>
+    <masterLabel>Product Family</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

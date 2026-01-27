@@ -4,7 +4,6 @@
     <fields>Name</fields>
     <fields>Company</fields>
     <fields>mfg_CIN__c</fields>
-    <fields>RecordTypeId</fields>
     <fields>Phone</fields>
     <fields>Email</fields>
     <label>Customer Compact  Layout</label>

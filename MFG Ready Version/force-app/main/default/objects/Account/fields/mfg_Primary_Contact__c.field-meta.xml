@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Primary_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>This contact has highest priority and primary contact for this account.</inlineHelpText>
+    <label>Primary Contact</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contact.mfg_Primary_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Contact.AccountId</field>
+            <operation>equals</operation>
+            <valueField>$Source.Id</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldOverrides>
+        <field>mfg_Account__c</field>
+        <formula>Opportunity.AccountId</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>mfg_Opportunity__c</field>
+        <formula>Opportunity.Id</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>mfg_Price_Book__c</field>
+        <formula>Opportunity.Pricebook2Id</formula>
+    </fieldOverrides>
+    <label>Sales Agreement</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>mfg_Account__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>mfg_Opportunity__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>mfg_Price_Book__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>mfg_Schedule_Frequency__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>mfg_Activation_Date__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+    </quickActionLayout>
+    <successMessage>Sales Agreement Created Successfully.Please Review it.</successMessage>
+    <targetObject>mfg_Sales_Agreement__c</targetObject>
+    <targetParentField>mfg_Opportunity__c</targetParentField>
+    <type>Create</type>
+</QuickAction>

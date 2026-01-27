@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Service_Applicable__c</fullName>
+    <formula>IF(
+    ISBLANK( mfg_Service_End_Date__c ),
+    TRUE,
+    mfg_Service_End_Date__c &gt;= TODAY()
+)</formula>
+    <inlineHelpText>Indicates whether the service is applicable for the asset. If the expiration date is blank, the service is considered valid for a lifetime. If the expiration date is in the past, the service is not applicable.</inlineHelpText>
+    <label>Service Applicable</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

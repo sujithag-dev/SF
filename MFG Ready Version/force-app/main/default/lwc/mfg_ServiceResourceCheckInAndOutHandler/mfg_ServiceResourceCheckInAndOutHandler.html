@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Technician Check In" icon-name="utility:checkin">
+
+        <template if:true={isLoading}>
+            <div class="slds-p-around_large slds-align_absolute-center">
+                <lightning-spinner alternative-text="Fetching location"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:false={isLoading}>
+            <div class="slds-p-around_medium slds-grid slds-wrap slds-text-align_center">
+
+                <!-- Time -->
+                <div class="slds-col slds-size_1-of-1 info-box">
+                    <lightning-icon icon-name="utility:clock" size="small"></lightning-icon>
+                    <p class="label">Check In Time</p>
+                    <p class="value">{formattedTime}</p>
+                </div>
+
+                <!-- Latitude -->
+                <div class="slds-col slds-size_1-of-2 info-box">
+                    <lightning-icon icon-name="utility:location" size="small"></lightning-icon>
+                    <p class="label">Latitude</p>
+                    <p class="value">{latitude}</p>
+                </div>
+
+                <!-- Longitude -->
+                <div class="slds-col slds-size_1-of-2 info-box">
+                    <lightning-icon icon-name="utility:location" size="small"></lightning-icon>
+                    <p class="label">Longitude</p>
+                    <p class="value">{longitude}</p>
+                </div>
+
+                <!-- Confirm Button -->
+                <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+                    <lightning-button
+                        variant="brand"
+                        label="Confirm Check In"
+                        onclick={handleConfirm}
+                        class="confirm-btn">
+                    </lightning-button>
+                </div>
+
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

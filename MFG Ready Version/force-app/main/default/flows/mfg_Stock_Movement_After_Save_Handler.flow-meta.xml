@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_New_Stock_Movement</name>
+        <label>Is New Stock Movement ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_Status_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No, Existing Stock Movement</defaultConnectorLabel>
+        <rules>
+            <name>Yes_New_Stock_Movement</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes, New Stock Movement</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Status_Changed</name>
+        <label>Is Status Changed?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No, Status Not Changed</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Status_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.mfg_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.mfg_Status__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Stock_Movement_Status_Set_to_Completed</targetReference>
+            </connector>
+            <label>Yes, Status Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Stock_Movement_Status_Set_to_Completed</name>
+        <label>Is Stock Movement Status Set to Completed ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No, Stock Movement is Not Completed</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Stock_Movement_is_Completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.mfg_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Inventory_Sync_From_Stock_Movement</targetReference>
+            </connector>
+            <label>Yes, Stock Movement is Completed</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Stock Movement After Save Handler - mfg_Stock_Movement_After_Save_Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Stock Movement After Save Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_New_Stock_Movement</targetReference>
+        </connector>
+        <filterFormula>{!$Label.mfg_Activate_Flow} = &quot;true&quot;</filterFormula>
+        <object>mfg_Stock_Movement__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Inventory_Sync_From_Stock_Movement</name>
+        <label>Inventory Sync From Stock Movement</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <flowName>mfg_Inventory_Sync_From_Stock_Movement</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

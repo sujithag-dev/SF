@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paid_Invoice_Payment_Lock</fullName>
+    <active>true</active>
+    <description>Prevents creating or editing payment details when the invoice status is Paid.</description>
+    <errorConditionFormula>ISPICKVAL(Invoice_And_Payment__r.mfg_Status__c, &apos;Paid&apos;)</errorConditionFormula>
+    <errorMessage>Payment for this invoice has been completed. The payment details cannot be created or edited because the invoice is already paid.</errorMessage>
+</ValidationRule>

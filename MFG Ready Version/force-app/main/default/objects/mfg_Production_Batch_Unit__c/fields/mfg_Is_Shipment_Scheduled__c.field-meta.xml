@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Is_Shipment_Scheduled__c</fullName>
+    <formula>NOT(ISBLANK( mfg_Transport_Product__c ))</formula>
+    <inlineHelpText>Identifies whether this unit is currently Scheduled for shipment.</inlineHelpText>
+    <label>Is Shipment Scheduled ?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

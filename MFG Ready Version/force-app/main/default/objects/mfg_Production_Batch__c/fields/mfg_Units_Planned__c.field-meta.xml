@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Units_Planned__c</fullName>
+    <inlineHelpText>Number of Units are produced.</inlineHelpText>
+    <label>Units Planned</label>
+    <summaryForeignKey>mfg_Production_Batch_Unit__c.mfg_Production_Batch__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

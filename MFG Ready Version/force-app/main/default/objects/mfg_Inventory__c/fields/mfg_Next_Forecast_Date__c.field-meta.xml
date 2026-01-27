@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Next_Forecast_Date__c</fullName>
+    <formula>IF(
+    ISBLANK(mfg_Last_Forecast_Date__c),
+    TODAY(),
+    mfg_Last_Forecast_Date__c
+)
++
+IF(
+    ISBLANK(mfg_Lead_Time_Days__c),
+    0,
+    mfg_Lead_Time_Days__c
+)</formula>
+    <inlineHelpText>The planned date for the next demand forecasting review for this inventory.</inlineHelpText>
+    <label>Next Forecast Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

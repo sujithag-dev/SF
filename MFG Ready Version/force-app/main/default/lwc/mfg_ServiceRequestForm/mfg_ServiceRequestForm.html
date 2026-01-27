@@ -1,0 +1,91 @@
+<template>
+  <div class="form-container slds-m-around_medium">
+
+    <!-- HEADER -->
+    <div class="form-header">
+      <div class="header-icon">🔧</div>
+      <h1 class="form-title">{title}</h1>
+      <h2 class="form-subtitle">{subtitle}</h2>
+      <p class="form-description">
+        Submit your service claim, return, or replacement request.
+        Our support team will contact you shortly.
+      </p>
+    </div>
+
+    <!-- WEB-TO-CASE FORM -->
+    <form
+      action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00Dg5000000ipRs"
+      method="POST"
+      class="enquiry-form"
+    >
+
+      <!-- REQUIRED HIDDEN FIELDS -->
+      <input type="hidden" name="orgid" value="00Dg5000000ipRs" />
+      <!-- <input type="hidden" name="retURL" value="https://tataautocomp.com/" /> -->
+      <!-- <input type="hidden" name="retURL" value="https://www.haier.com/in/service-support/"> -->
+      <input type="hidden" name="retURL" value="https://www.minusculetechnologies.com/">
+
+      <input type="hidden" name="external" value="1" />
+
+      <!-- CONTACT INFO -->
+      <h3 class="section-title">Contact Information</h3>
+
+      <div class="grid-container">
+        <div class="grid-item">
+          <label>Contact Name</label>
+          <input name="name" maxlength="80" required placeholder="Enter your full name" />
+        </div>
+
+        <div class="grid-item">
+          <label>Email</label>
+          <input name="email" type="email" maxlength="80" required placeholder="yourname@email.com" />
+        </div>
+
+        <div class="grid-item">
+          <label>Phone</label>
+          <input name="phone" maxlength="40" placeholder="+91 9XXXXXXXXX" />
+        </div>
+
+        <div class="grid-item">
+          <label>Subject</label>
+          <input name="subject" maxlength="80" placeholder="Issue summary" />
+        </div>
+      </div>
+
+      <!-- CASE DETAILS -->
+      <h3 class="section-title">Case Details</h3>
+
+      <div class="grid-container">
+        <div class="grid-item full">
+          <label>Case Reason</label>
+          <select name="reason" required>
+            <option value="">-- Select Reason --</option>
+            <option value="Service Claim">Service Claim</option>
+            <option value="Return Product">Return Product</option>
+            <option value="Replacement / Exchange">Replacement / Exchange</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="grid-item">
+          <label>CIN</label>
+          <input name="00Ng5000005IpVp" maxlength="21" placeholder="Enter CIN" />
+        </div>
+
+
+
+
+        <div class="grid-item full">
+          <label>Description</label>
+          <textarea
+            name="description"
+            rows="4"
+            placeholder="Describe the issue in detail"
+          ></textarea>
+        </div>
+      </div>
+
+      <input type="submit" value="SUBMIT REQUEST" class="submit-btn" />
+    </form>
+  </div>
+</template>

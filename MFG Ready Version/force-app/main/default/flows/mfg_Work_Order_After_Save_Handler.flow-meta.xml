@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Create_Work_Order_Line_Items_from_Case_Line_Items</name>
+        <label>Create Work Order Line Items from Case Line Items</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>MFG_WorkOrderLineItemCreationHandler</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>CreateServiceAppointmentsfromWorkOrders</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>workOrderIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>MFG_WorkOrderLineItemCreationHandler</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>CreateServiceAppointmentsfromWorkOrders</name>
+        <label>Create Service Appointments from Work Orders</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>MFG_ServiceAppointmentCreationHandler</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>workOrderIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>MFG_ServiceAppointmentCreationHandler</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_New_Record</name>
+        <label>Is New Record?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No, Existing Work Order</defaultConnectorLabel>
+        <rules>
+            <name>Yes_New_Work_Order</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Work_Order_Line_Items_from_Case_Line_Items</targetReference>
+            </connector>
+            <label>Yes, New Work Order</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Work Order After Save Handler - mfg_Work_Order_After_Save_Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Work Order After Save Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_New_Record</targetReference>
+        </connector>
+        <filterFormula>{!$Label.mfg_Activate_Flow} = &quot;true&quot;</filterFormula>
+        <object>WorkOrder</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

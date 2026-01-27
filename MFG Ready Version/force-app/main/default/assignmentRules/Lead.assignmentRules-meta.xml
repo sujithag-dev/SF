@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>MFG Lead Assignment Rule</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>MFG_Sales_Manager</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.mfg_Lead_Type__c</field>
+                <operation>equals</operation>
+                <value>mfg_Dealer_Lead_Recordtype</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MFG_Sales_Representative</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.mfg_Lead_Type__c</field>
+                <operation>equals</operation>
+                <value>mfg_Customer_Lead_Recordtype</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

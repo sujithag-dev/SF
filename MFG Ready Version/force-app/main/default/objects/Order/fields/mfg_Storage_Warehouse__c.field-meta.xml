@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_Storage_Warehouse__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Storage Warehouse</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>mfg_Warehouse__c.mfg_Type__c</field>
+            <operation>equals</operation>
+            <value>Storage</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>mfg_Warehouse__c</referenceTo>
+    <relationshipLabel>Orders</relationshipLabel>
+    <relationshipName>Orders</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

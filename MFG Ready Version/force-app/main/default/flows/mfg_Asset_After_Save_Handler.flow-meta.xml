@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Create_Asset_Services</name>
+        <label>Create Asset Services</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>MFG_AssetServiceCreationHandler</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>assetIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>MFG_AssetServiceCreationHandler</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>If_Asset_Status_Set_To</name>
+        <label>If Asset Status Set To</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Others</defaultConnectorLabel>
+        <rules>
+            <name>Installed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Installed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Product_Populated</targetReference>
+            </connector>
+            <label>Installed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_New_Asset</name>
+        <label>Is New Asset?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_Status_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No, Existing Asset</defaultConnectorLabel>
+        <rules>
+            <name>Yes_New_Asset</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes, New Asset</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Product_Populated</name>
+        <label>Is Product Populated ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No, Product Not Populated</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Product_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Product2Id</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Asset_Services</targetReference>
+            </connector>
+            <label>Yes, Product Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Status_Changed</name>
+        <label>Is Status Changed?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No, Status Not Changed</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Status_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Status</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>If_Asset_Status_Set_To</targetReference>
+            </connector>
+            <label>Yes, Status Changed</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Asset After Save Handler - mfg_Asset_After_Save_Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Asset After Save Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_New_Asset</targetReference>
+        </connector>
+        <filterFormula>{!$Label.mfg_Activate_Flow} = &quot;true&quot;</filterFormula>
+        <object>Asset</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

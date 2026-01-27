@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mfg_All_Inventories_Planning</fullName>
+    <columns>NAME</columns>
+    <columns>mfg_Product__c</columns>
+    <columns>mfg_Warehouse__c</columns>
+    <columns>mfg_Available_Quantity__c</columns>
+    <columns>mfg_Reorder_Point_Units__c</columns>
+    <columns>mfg_Inventory_Below_Safety_Level__c</columns>
+    <columns>mfg_Batch_Size__c</columns>
+    <columns>mfg_Last_Forecast_Date__c</columns>
+    <columns>mfg_Lead_Time_Days__c</columns>
+    <columns>mfg_Next_Forecast_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Inventories Planning</label>
+</ListView>
