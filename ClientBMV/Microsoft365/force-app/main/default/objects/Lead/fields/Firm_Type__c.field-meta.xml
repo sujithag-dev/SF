@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Firm_Type__c</fullName>
+    <label>Firm Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hedge Fund</fullName>
+                <default>false</default>
+                <label>Hedge Fund</label>
+            </value>
+            <value>
+                <fullName>Pension Fund</fullName>
+                <default>false</default>
+                <label>Pension Fund</label>
+            </value>
+            <value>
+                <fullName>Mutual Fund</fullName>
+                <default>false</default>
+                <label>Mutual Fund</label>
+            </value>
+            <value>
+                <fullName>Family Office</fullName>
+                <default>false</default>
+                <label>Family Office</label>
+            </value>
+            <value>
+                <fullName>Endowment Fund</fullName>
+                <default>false</default>
+                <label>Endowment Fund</label>
+            </value>
+            <value>
+                <fullName>Sovereign Wealth Fund</fullName>
+                <default>false</default>
+                <label>Sovereign Wealth Fund</label>
+            </value>
+            <value>
+                <fullName>Insurance Company</fullName>
+                <default>false</default>
+                <label>Insurance Company</label>
+            </value>
+            <value>
+                <fullName>Commercial Bank</fullName>
+                <default>false</default>
+                <label>Commercial Bank</label>
+            </value>
+            <value>
+                <fullName>Investment Bank</fullName>
+                <default>false</default>
+                <label>Investment Bank</label>
+            </value>
+            <value>
+                <fullName>Independent RIA</fullName>
+                <default>false</default>
+                <label>Independent RIA</label>
+            </value>
+            <value>
+                <fullName>Broker-Dealer</fullName>
+                <default>false</default>
+                <label>Broker-Dealer</label>
+            </value>
+            <value>
+                <fullName>Private Equity Firm</fullName>
+                <default>false</default>
+                <label>Private Equity Firm</label>
+            </value>
+            <value>
+                <fullName>Venture Capital Firm</fullName>
+                <default>false</default>
+                <label>Venture Capital Firm</label>
+            </value>
+            <value>
+                <fullName>Corporation</fullName>
+                <default>false</default>
+                <label>Corporation</label>
+            </value>
+            <value>
+                <fullName>Individual</fullName>
+                <default>false</default>
+                <label>Individual</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

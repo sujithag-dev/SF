@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Products_of_Interest__c</fullName>
+    <label>BMV Products of Interest</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BMV Equities</fullName>
+                <default>false</default>
+                <label>BMV Equities</label>
+            </value>
+            <value>
+                <fullName>Mexican Government Bonds (CETES)</fullName>
+                <default>false</default>
+                <label>Mexican Government Bonds (CETES)</label>
+            </value>
+            <value>
+                <fullName>Corporate Bonds</fullName>
+                <default>false</default>
+                <label>Corporate Bonds</label>
+            </value>
+            <value>
+                <fullName>Exchange Traded Funds (ETFs)</fullName>
+                <default>false</default>
+                <label>Exchange Traded Funds (ETFs)</label>
+            </value>
+            <value>
+                <fullName>FX / Peso Hedging</fullName>
+                <default>false</default>
+                <label>FX / Peso Hedging</label>
+            </value>
+            <value>
+                <fullName>Derivatives (MexDer)</fullName>
+                <default>false</default>
+                <label>Derivatives (MexDer)</label>
+            </value>
+            <value>
+                <fullName>Market Data Feed</fullName>
+                <default>false</default>
+                <label>Market Data Feed</label>
+            </value>
+            <value>
+                <fullName>Index Products</fullName>
+                <default>false</default>
+                <label>Index Products</label>
+            </value>
+            <value>
+                <fullName>Real Estate Investment Trusts (FIBRAs)</fullName>
+                <default>false</default>
+                <label>Real Estate Investment Trusts (FIBRAs)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

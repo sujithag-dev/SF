@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Risk_Urgency__c</fullName>
+    <description>Urgency level of the recommended action from Agentforce analysis.</description>
+    <label>Risk Urgency</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Today</fullName>
+                <default>false</default>
+                <label>Today</label>
+            </value>
+            <value>
+                <fullName>This Week</fullName>
+                <default>false</default>
+                <label>This Week</label>
+            </value>
+            <value>
+                <fullName>Urgent</fullName>
+                <default>false</default>
+                <label>Urgent</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

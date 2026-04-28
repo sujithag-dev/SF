@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_No_Activity__c</fullName>
+    <description>Auto calculates days since last activity. Triggers no activity warning in Teams.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISBLANK(Last_Activity_Date__c),
+  0,
+  TODAY() - Last_Activity_Date__c
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Days No Activity</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

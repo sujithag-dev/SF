@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Risk_Alert_Sent__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked after Teams alert has been sent to prevent duplicate notifications. Reset to false when Risk_Flag__c is cleared.</description>
+    <label>Risk Alert Sent</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

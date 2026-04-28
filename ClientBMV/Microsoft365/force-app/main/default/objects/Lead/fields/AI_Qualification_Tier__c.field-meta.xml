@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AI_Qualification_Tier__c</fullName>
+    <label>AI Qualification Tier</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hot (Score 80 to 100)</fullName>
+                <default>false</default>
+                <label>Hot (Score 80 to 100)</label>
+            </value>
+            <value>
+                <fullName>Warm (Score 50 to 79)</fullName>
+                <default>false</default>
+                <label>Warm (Score 50 to 79)</label>
+            </value>
+            <value>
+                <fullName>Cold (Score 20 to 49)</fullName>
+                <default>false</default>
+                <label>Cold (Score 20 to 49)</label>
+            </value>
+            <value>
+                <fullName>Disqualified (Score 0 to 19)</fullName>
+                <default>false</default>
+                <label>Disqualified (Score 0 to 19)</label>
+            </value>
+            <value>
+                <fullName>Not Scored</fullName>
+                <default>false</default>
+                <label>Not Scored</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

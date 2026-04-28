@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Size_Category__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Amount &gt;= 1000000, &quot;Mega Deal (&gt;$1M)&quot;,
+  IF(Amount &gt;= 500000, &quot;Large Deal (&gt;$500K)&quot;,
+    IF(Amount &gt;= 100000, &quot;Mid Deal (&gt;$100K)&quot;,
+      &quot;Small Deal&quot;
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Deal Size Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

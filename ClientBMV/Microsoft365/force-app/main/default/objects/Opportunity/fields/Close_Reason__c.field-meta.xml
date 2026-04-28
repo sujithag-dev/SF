@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Reason__c</fullName>
+    <label>Close Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Won - Strong Relationship</fullName>
+                <default>false</default>
+                <label>Won - Strong Relationship</label>
+            </value>
+            <value>
+                <fullName>Won - Best Price</fullName>
+                <default>false</default>
+                <label>Won - Best Price</label>
+            </value>
+            <value>
+                <fullName>Won - Product Fit</fullName>
+                <default>false</default>
+                <label>Won - Product Fit</label>
+            </value>
+            <value>
+                <fullName>Won - Market Access</fullName>
+                <default>false</default>
+                <label>Won - Market Access</label>
+            </value>
+            <value>
+                <fullName>Won - Referral</fullName>
+                <default>false</default>
+                <label>Won - Referral</label>
+            </value>
+            <value>
+                <fullName>Lost - Price</fullName>
+                <default>false</default>
+                <label>Lost - Price</label>
+            </value>
+            <value>
+                <fullName>Lost - Competitor</fullName>
+                <default>false</default>
+                <label>Lost - Competitor</label>
+            </value>
+            <value>
+                <fullName>Lost - Regulatory</fullName>
+                <default>false</default>
+                <label>Lost - Regulatory</label>
+            </value>
+            <value>
+                <fullName>Lost - No Budget</fullName>
+                <default>false</default>
+                <label>Lost - No Budget</label>
+            </value>
+            <value>
+                <fullName>Lost - Timing</fullName>
+                <default>false</default>
+                <label>Lost - Timing</label>
+            </value>
+            <value>
+                <fullName>Lost - No Decision</fullName>
+                <default>false</default>
+                <label>Lost - No Decision</label>
+            </value>
+            <value>
+                <fullName>Lost - Market Conditions</fullName>
+                <default>false</default>
+                <label>Lost - Market Conditions</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

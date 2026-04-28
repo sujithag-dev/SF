@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AUM_Range__c</fullName>
+    <label>Assets Under Management</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Under $1M</fullName>
+                <default>false</default>
+                <label>Under $1M</label>
+            </value>
+            <value>
+                <fullName>$1M - $10M</fullName>
+                <default>false</default>
+                <label>$1M - $10M</label>
+            </value>
+            <value>
+                <fullName>$10M - $50M</fullName>
+                <default>false</default>
+                <label>$10M - $50M</label>
+            </value>
+            <value>
+                <fullName>$50M - $100M</fullName>
+                <default>false</default>
+                <label>$50M - $100M</label>
+            </value>
+            <value>
+                <fullName>$100M - $500M</fullName>
+                <default>false</default>
+                <label>$100M - $500M</label>
+            </value>
+            <value>
+                <fullName>$500M - $1B</fullName>
+                <default>false</default>
+                <label>$500M - $1B</label>
+            </value>
+            <value>
+                <fullName>Over $1B</fullName>
+                <default>false</default>
+                <label>Over $1B</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

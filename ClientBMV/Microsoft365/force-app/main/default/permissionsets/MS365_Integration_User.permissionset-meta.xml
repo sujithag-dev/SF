@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grants access to all MS365 integration custom fields, platform events, and flows. Assign to users or integration accounts that need to read/write integration metadata and receive Teams notifications.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>MS365 Integration User</label>
+
+    <!-- ═══════════════════════════════════════
+         FIELD PERMISSIONS — Lead Custom Fields
+    ═══════════════════════════════════════ -->
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.Teams_UPN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.Last_Contact_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.Lead_Score__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.Days_Since_Contact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+
+    <!-- ═══════════════════════════════════════
+         FIELD PERMISSIONS — Opportunity Custom Fields
+    ═══════════════════════════════════════ -->
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Close_Reason__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Last_Activity_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Deal_Size_Category__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+
+    <!-- ═══════════════════════════════════════
+         FIELD PERMISSIONS — User Custom Fields
+    ═══════════════════════════════════════ -->
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Teams_UPN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+
+    <!-- ═══════════════════════════════════════
+         OBJECT PERMISSIONS — Platform Events
+         (allowCreate = publish, allowRead = subscribe)
+    ═══════════════════════════════════════ -->
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Lead_Lifecycle_Event__e</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Opportunity_Lifecycle_Event__e</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Task_Alert_Event__e</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <!-- ═══════════════════════════════════════
+         APEX CLASS ACCESS
+    ═══════════════════════════════════════ -->
+    <classAccesses>
+        <apexClass>MS365IntegrationHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+
+</PermissionSet>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <!-- Base URL of your Salesforce org — update before deployment -->
+    <labels>
+        <fullName>SF_ORG_BASE_URL</fullName>
+        <categories>MS365Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Salesforce Org Base URL</shortDescription>
+        <value>https://yourorg.salesforce.com</value>
+    </labels>
+
+    <!-- Master kill-switch — set to false to suppress all Teams notifications -->
+    <labels>
+        <fullName>TEAMS_ALERT_ENABLED</fullName>
+        <categories>MS365Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Teams Alert Enabled</shortDescription>
+        <value>true</value>
+    </labels>
+
+    <!-- Lead Score value that triggers a LEAD_SCORE_ALERT event -->
+    <labels>
+        <fullName>LEAD_SCORE_THRESHOLD</fullName>
+        <categories>MS365Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead Score Alert Threshold</shortDescription>
+        <value>80</value>
+    </labels>
+
+    <!-- Number of days without activity before OPP_NO_ACTIVITY fires -->
+    <labels>
+        <fullName>NO_ACTIVITY_DAYS_THRESHOLD</fullName>
+        <categories>MS365Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Activity Days Threshold</shortDescription>
+        <value>7</value>
+    </labels>
+
+    <!-- Opportunity Amount that triggers an OPP_BIG_DEAL event -->
+    <labels>
+        <fullName>BIG_DEAL_THRESHOLD</fullName>
+        <categories>MS365Integration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Big Deal Amount Threshold</shortDescription>
+        <value>100000</value>
+    </labels>
+
+</CustomLabels>
